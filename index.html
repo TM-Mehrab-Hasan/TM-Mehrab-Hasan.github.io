@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T. M. Mehrab Hasan - IoT & Robotics Engineer</title>
+    <title>T. M. Mehrab Hasan - IoT & Robotics Engineer | Portfolio</title>
+    <meta name="description" content="IoT & Robotics Engineer specializing in intelligent systems, web development, and machine learning solutions.">
     
     <!-- Bootstrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,6 +25,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="logo-preloader">TM</div>
+            <div class="loading-text">Loading Portfolio...</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Custom Cursor -->
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
@@ -34,82 +46,344 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#home">T. M. MEHRAB</a>
+            <a class="navbar-brand" href="#home">
+                <span class="brand-logo">TM</span>
+                <span class="brand-text">.MEHRAB</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#achievements">Awards</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#activities">Activities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero">
+    <section id="hero" class="hero-section">
         <div id="three-container"></div>
-        <div class="hero-content">
-            <h1 class="hero-title" data-aos="fade-up">T. M. MEHRAB HASAN</h1>
-            <div class="hero-subtitle typewriter" data-aos="fade-up" data-aos-delay="500">
-                IoT Engineer • Robotics Engineer • Web Developer
+        <div class="hero-gradient"></div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content" data-aos="fade-up">
+                        <div class="hero-badge">
+                            <i class="fas fa-code"></i>
+                            <span>Available for Opportunities</span>
+                        </div>
+                        <h1 class="hero-title">
+                            <span class="title-line">Hello, I'm</span>
+                            <span class="title-name">Mehrab Hasan</span>
+                            <span class="title-role typewriter">IoT & Robotics Engineer</span>
+                        </h1>
+                        <p class="hero-description">
+                            Passionate about creating intelligent, connected systems and dynamic digital solutions. 
+                            I specialize in IoT engineering, robotics, and web development to solve real-world challenges.
+                        </p>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">2+</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">20+</div>
+                                <div class="stat-label">Projects</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">5</div>
+                                <div class="stat-label">Publications</div>
+                            </div>
+                        </div>
+                        <div class="hero-actions">
+                            <a href="#projects" class="btn-primary">
+                                <span>View My Work</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#contact" class="btn-secondary">
+                                <span>Get In Touch</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-visual" data-aos="fade-left" data-aos-delay="300">
+                        <div class="bento-grid">
+                            <div class="bento-item large">
+                                <div class="bento-content">
+                                    <i class="fas fa-robot"></i>
+                                    <h3>IoT Engineering</h3>
+                                    <p>Smart systems & automation</p>
+                                </div>
+                            </div>
+                            <div class="bento-item">
+                                <div class="bento-content">
+                                    <i class="fas fa-code"></i>
+                                    <h4>Web Dev</h4>
+                                </div>
+                            </div>
+                            <div class="bento-item">
+                                <div class="bento-content">
+                                    <i class="fas fa-brain"></i>
+                                    <h4>AI/ML</h4>
+                                </div>
+                            </div>
+                            <div class="bento-item">
+                                <div class="bento-content">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <h4>Mobile</h4>
+                                </div>
+                            </div>
+                            <div class="bento-item">
+                                <div class="bento-content">
+                                    <i class="fas fa-database"></i>
+                                    <h4>Database</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <a href="#about" class="cta-button" data-aos="fade-up" data-aos-delay="1000">
-                Explore My Work <i class="fas fa-arrow-down ms-2"></i>
-            </a>
+        </div>
+        <div class="scroll-indicator-hero">
+            <span>Scroll Down</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">About Me</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="about-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="row align-items-center">
-                            <div class="col-md-4 text-center">
-                                <div class="profile-img">
-                                    <img src="images/profile-picture.jpg" alt="Profile" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">WHO I AM</span>
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Passionate technology innovator with expertise in IoT, robotics, and web development</p>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="about-image">
+                        <div class="image-container">
+                            <div class="profile-placeholder">
+                                <img src="images/profile-picture.jpg" alt="Profile" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                            </div>
+                            <div class="floating-elements">
+                                <div class="floating-item" style="top: 10%; right: 10%;">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="floating-item" style="bottom: 20%; left: 10%;">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <div class="floating-item" style="top: 50%; right: -10%;">
+                                    <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <div class="col-md-8">
-                                <h3 class="mb-3" style="color: var(--primary-color);">Passionate Technology Innovator</h3>
-                                <p class="mb-3">
-                                    With a passion for IoT & Robotics Engineering and Web Development, I aim to leverage my skills to create intelligent, connected systems and dynamic digital solutions for real-world challenges.
-                                </p>
-                                <p class="mb-4">
-                                    I hold a B. Sc.(Engg.) in IoT & Robotics Engineering from Gazipur Digital University with a CGPA of 3.71/4.00, and I'm committed to continuous learning and creative problem-solving.
-                                </p>
-                                <div class="row text-center">
-                                    <div class="col-4">
-                                        <h4 style="color: var(--accent-color);">5+</h4>
-                                        <p>Years Experience</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <h4 style="color: var(--accent-color);">10+</h4>
-                                        <p>Projects Completed</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <h4 style="color: var(--accent-color);">3</h4>
-                                        <p>Publications</p>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="about-content">
+                        <h3>Creating tomorrow's technology today</h3>
+                        <p>With a passion for IoT & Robotics Engineering and Web Development, I aim to leverage my skills to create intelligent, connected systems and dynamic digital solutions for real-world challenges.</p>
+                        <p>My focus is on integrating advanced IoT technologies with seamless web platforms to enhance efficiency, connectivity, and user experience. Committed to continuous learning and creative problem-solving.</p>
+                        
+                        <div class="about-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Location:</span>
+                                <span class="detail-value">Dhaka, Bangladesh</span>
                             </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Email:</span>
+                                <span class="detail-value">tmmehrabhasan@gmail.com</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Phone:</span>
+                                <span class="detail-value">+8801568901285</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">linkedin:</span>
+                                <span class="detail-value">T. M. Mehrab Hasan</span>
+                            </div>
+                        </div>
+
+                        <div class="about-actions">
+                            <a href="Curriculum Vitae [T. M. Mehrab Hasan].pdf" class="btn-primary" download>
+                                <i class="fas fa-download"></i>
+                                <span>Download CV</span>
+                            </a>
+                            <div class="social-links">
+                                <a href="https://github.com/tm-mehrab-hasan" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://linkedin.com/in/TM-Mehrab-Hasan" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://tm-mehrab-hasan.github.io" target="_blank">
+                                    <i class="fas fa-globe"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section section-dark">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">LEARNING JOURNEY</span>
+                <h2 class="section-title">Education</h2>
+                <p class="section-subtitle">Academic foundation in engineering and technology</p>
+            </div>
+            <div class="timeline" data-aos="fade-up" data-aos-delay="200">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">Jan 2020 - Jan 2025</div>
+                        <h3>B.Sc. Engineering (IoT & Robotics)</h3>
+                        <h4>Gazipur Digital University</h4>
+                        <p>Graduated with CGPA 3.71/4.00 in IoT & Robotics Engineering. Specialized in intelligent systems, embedded programming, and automation technologies.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">IoT Systems</span>
+                            <span class="tag">Robotics</span>
+                            <span class="tag">Embedded Systems</span>
+                            <span class="tag">Programming</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">Jun 2017 - May 2019</div>
+                        <h3>Higher Secondary Certificate</h3>
+                        <h4>Notre Dame College, Dhaka</h4>
+                        <p>Completed HSC with GPA 5.00 in Science background. Strong foundation in mathematics, physics, and chemistry.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Science</span>
+                            <span class="tag">Mathematics</span>
+                            <span class="tag">Physics</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-period">Jan 2007 - May 2017</div>
+                        <h3>Secondary School Certificate</h3>
+                        <h4>Monipur High School & College</h4>
+                        <p>Completed SSC with GPA 5.00 in Science background. Developed early interest in technology and engineering.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Science Foundation</span>
+                            <span class="tag">Academic Excellence</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">CAREER PATH</span>
+                <h2 class="section-title">Work Experience</h2>
+                <p class="section-subtitle">Professional journey in technology and innovation</p>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="experience-header">
+                        <div class="company-info">
+                            <h3>Django (Python) Intern</h3>
+                            <h4>Perpex</h4>
+                            <div class="experience-period">July 2025 - Current</div>
+                        </div>
+                        <div class="company-logo">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <div class="experience-content">
+                        <p>Leading Django (python) development and backend development with authentication and Restful APIs.</p>
+                        <ul class="experience-achievements">
+                            <li>Designed and optimized relational database models, queries, and migrations for scalable performance.</li>
+                            <li>Integrated RESTful APIs and third party services to support real-time data communication.</li>
+                            <li>Implemented authentication, authorization, and security best practices to safeguard user data.</li>
+                        </ul>
+                        <div class="experience-tags">
+                            <span class="tag">Robotics</span>
+                            <span class="tag">Embedded Systems</span>
+                            <span class="tag">IoT Integration</span>
+                            <span class="tag">Course Development</span>
+                        </div>
+                    </div>
+                </div>
+            <div class="experience-grid">
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="experience-header">
+                        <div class="company-info">
+                            <h3>Robotics & Embedded System Engineer</h3>
+                            <h4>Robo Tech Valley</h4>
+                            <div class="experience-period">May 2025 - July 2025</div>
+                        </div>
+                        <div class="company-logo">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <div class="experience-content">
+                        <p>Leading robotics project development and educational course creation with focus on embedded systems and automation.</p>
+                        <ul class="experience-achievements">
+                            <li>Designed and developed various robotics projects and courses</li>
+                            <li>Optimized robotic projects performance, security, and accessibility</li>
+                            <li>Integrated sensors, microcontrollers, Firebase databases and APIs</li>
+                            <li>Implemented web-based and real-time functionalities</li>
+                        </ul>
+                        <div class="experience-tags">
+                            <span class="tag">Robotics</span>
+                            <span class="tag">Embedded Systems</span>
+                            <span class="tag">IoT Integration</span>
+                            <span class="tag">Course Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="experience-header">
+                        <div class="company-info">
+                            <h3>Lead Web Developer</h3>
+                            <h4>Greenity Foundation</h4>
+                            <div class="experience-period">Jan 2022 - Feb 2023</div>
+                        </div>
+                        <div class="company-logo">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                    </div>
+                    <div class="experience-content">
+                        <p>Led web development initiatives for environmental foundation, creating impactful digital platforms.</p>
+                        <ul class="experience-achievements">
+                            <li>Designed and maintained foundation's website platforms</li>
+                            <li>Led a team of developers in implementing responsive web applications</li>
+                            <li>Integrated backend databases and APIs for enhanced functionality</li>
+                            <li>Ensured seamless user experiences across all platforms</li>
+                        </ul>
+                        <div class="experience-tags">
+                            <span class="tag">Web Development</span>
+                            <span class="tag">Team Leadership</span>
+                            <span class="tag">Database Integration</span>
+                            <span class="tag">API Development</span>
                         </div>
                     </div>
                 </div>
@@ -118,55 +392,152 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section">
+    <section id="skills" class="section section-dark">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Skills & Expertise</h2>
-            <div class="row">
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-code"></i>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">EXPERTISE</span>
+                <h2 class="section-title">Skills & Technologies</h2>
+                <p class="section-subtitle">Comprehensive toolkit for modern technology development</p>
+            </div>
+            
+            <div class="skills-container">
+                <div class="skills-category" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Programming Languages</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fab fa-python"></i></div>
+                            <div class="skill-info">
+                                <h4>Python</h4>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-width="95"></div>
+                                </div>
+                            </div>
                         </div>
-                        <h4>Programming</h4>
-                        <p>Python, C++, JavaScript, PHP</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-width="90"></div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-code"></i></div>
+                            <div class="skill-info">
+                                <h4>C/C++</h4>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-width="90"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fab fa-js"></i></div>
+                            <div class="skill-info">
+                                <h4>JavaScript</h4>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-width="88"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fab fa-php"></i></div>
+                            <div class="skill-info">
+                                <h4>PHP</h4>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-width="85"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-robot"></i>
+
+                <div class="skills-category" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Web Technologies</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fab fa-react"></i></div>
+                            <div class="skill-info">
+                                <h4>React JS</h4>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-width="92"></div>
+                                </div>
+                            </div>
                         </div>
-                        <h4>IoT & Robotics</h4>
-                        <p>Arduino, Sensors, Embedded Systems</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-width="85"></div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                            <div class="skill-info">
+                                <h4>HTML/CSS</h4>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-width="95"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-server"></i></div>
+                            <div class="skill-info">
+                                <h4>Django</h4>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-width="88"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-globe"></i>
+
+                <div class="skills-category" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Databases</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-database"></i></div>
+                            <div class="skill-info">
+                                <h4>MySQL</h4>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-width="90"></div>
+                                </div>
+                            </div>
                         </div>
-                        <h4>Web Development</h4>
-                        <p>React, Django, HTML, CSS, JS</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-width="88"></div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-leaf"></i></div>
+                            <div class="skill-info">
+                                <h4>MongoDB</h4>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-width="85"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-fire"></i></div>
+                            <div class="skill-info">
+                                <h4>Firebase</h4>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-width="88"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-brain"></i>
+
+                <div class="skills-category" data-aos="fade-up" data-aos-delay="400">
+                    <h3>IoT & Hardware</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-microchip"></i></div>
+                            <div class="skill-info">
+                                <h4>Arduino</h4>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-width="93"></div>
+                                </div>
+                            </div>
                         </div>
-                        <h4>Machine Learning</h4>
-                        <p>AI, Deep Learning, Data Analysis</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-width="80"></div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-robot"></i></div>
+                            <div class="skill-info">
+                                <h4>Embedded Systems</h4>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-width="87"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-wifi"></i></div>
+                            <div class="skill-info">
+                                <h4>IoT Integration</h4>
+                                <div class="skill-level">
+                                    <div class="skill-progress" data-width="90"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -177,130 +548,428 @@
     <!-- Projects Section -->
     <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">MY WORK</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Innovative solutions combining IoT, robotics, and web technologies</p>
+            </div>
             
-            <div class="filter-buttons" data-aos="fade-up" data-aos-delay="200">
-                <button class="filter-btn active" data-filter="all">All</button>
+            <div class="project-filters" data-aos="fade-up" data-aos-delay="200">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
                 <button class="filter-btn" data-filter="iot">IoT</button>
                 <button class="filter-btn" data-filter="robotics">Robotics</button>
                 <button class="filter-btn" data-filter="ml">Machine Learning</button>
-                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
             </div>
 
-            <div class="row" id="projects-container">
-                <div class="col-lg-4 col-md-6 project-item" data-category="iot robotics" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-card">
-                        <div class="project-img">
+            <div class="projects-grid" id="projects-container">
+                <div class="project-card featured" data-category="iot robotics" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-icon">
                             <i class="fas fa-fire"></i>
                         </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Fire Detection Robot</h3>
-                            <p>An autonomous robot for fire detection with automated water sprinkler, wireless control, and real-time alerts. Featured at 57th International Education Expo 2023.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">IoT</span>
-                                <span class="tech-tag">Robotics</span>
-                                <span class="tech-tag">Wireless</span>
-                                <span class="tech-tag">Arduino</span>
+                        <div class="featured-badge">Featured Project</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-category">IoT • Robotics</span>
+                            <span class="project-year">2023</span>
+                        </div>
+                        <h3>Early Stage Fire Detection Robot</h3>
+                        <p>An autonomous robot for fire detection with automated water sprinkler, wireless control, and real-time alerts. Featured at 57th International Education Expo 2023.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Arduino</span>
+                            <span class="tech-tag">IoT Sensors</span>
+                            <span class="tech-tag">Wireless Control</span>
+                            <span class="tech-tag">Real-time Alerts</span>
+                        </div>
+                        <div class="project-achievements">
+                            <div class="achievement">
+                                <i class="fas fa-trophy"></i>
+                                <span>Exhibited at International Expo</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 project-item" data-category="iot ml" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-card">
-                        <div class="project-img">
+                <div class="project-card" data-category="iot ml" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-icon">
                             <i class="fas fa-water"></i>
                         </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Smart Drainage System</h3>
-                            <p>IoT-based system for garbage detection using ML with automated water-flow control and real-time monitoring with alert system for Bangladesh.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">IoT</span>
-                                <span class="tech-tag">ML</span>
-                                <span class="tech-tag">Mobile App</span>
-                                <span class="tech-tag">Sensors</span>
-                            </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-category">IoT • ML</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3>Smart Drainage Congestion Management</h3>
+                        <p>IoT-based system for garbage detection using ML with automated water-flow control and real-time monitoring for Bangladesh's drainage systems.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Mobile App</span>
+                            <span class="tech-tag">IoT Sensors</span>
+                            <span class="tech-tag">Real-time Monitoring</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 project-item" data-category="ml" data-aos="fade-up" data-aos-delay="300">
-                    <div class="project-card">
-                        <div class="project-img">
+                <div class="project-card" data-category="ml" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-icon">
                             <i class="fas fa-chart-line"></i>
                         </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Investment Advisor AI</h3>
-                            <p>Stacked ML-based system for investment recommendations with Explainable AI providing clear reasoning for investment decisions.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">ML</span>
-                                <span class="tech-tag">Deep Learning</span>
-                                <span class="tech-tag">Explainable AI</span>
-                                <span class="tech-tag">Python</span>
-                            </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-category">AI • ML</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3>Intelligent Investment Advisor AI</h3>
+                        <p>Stacked ML-based system for investment recommendations with Explainable AI providing clear reasoning for investment decisions.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Deep Learning</span>
+                            <span class="tech-tag">Explainable AI</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Data Analysis</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 project-item" data-category="web" data-aos="fade-up" data-aos-delay="400">
-                    <div class="project-card">
-                        <div class="project-img">
+                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-icon">
                             <i class="fas fa-leaf"></i>
                         </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Greenity Foundation Website</h3>
-                            <p>Led development of responsive website platforms for environmental foundation, integrating backend databases and APIs.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Web Development</span>
-                                <span class="tech-tag">Team Leadership</span>
-                                <span class="tech-tag">APIs</span>
-                                <span class="tech-tag">Database</span>
-                            </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-category">Web Development</span>
+                            <span class="project-year">2022-2023</span>
+                        </div>
+                        <h3>Greenity Foundation Platform</h3>
+                        <p>Led development of responsive website platforms for environmental foundation, integrating backend databases and APIs for enhanced functionality.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React JS</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Database</span>
+                            <span class="tech-tag">API Integration</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 project-item" data-category="robotics" data-aos="fade-up" data-aos-delay="500">
-                    <div class="project-card">
-                        <div class="project-img">
-                            <i class="fas fa-cog"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Robotics Course Projects</h3>
-                            <p>Various robotics projects and courses developed at Robo Tech Valley, focusing on embedded systems and automation.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Robotics</span>
-                                <span class="tech-tag">Embedded</span>
-                                <span class="tech-tag">Automation</span>
-                                <span class="tech-tag">Teaching</span>
+                <div class="project-card" data-category="robotics" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
                             </div>
+                        </div>
+                        <div class="project-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-category">Robotics</span>
+                            <span class="project-year">2025</span>
+                        </div>
+                        <h3>Robotics Course Development</h3>
+                        <p>Comprehensive robotics projects and educational courses focusing on embedded systems, automation, and real-world applications.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Embedded Systems</span>
+                            <span class="tech-tag">Arduino</span>
+                            <span class="tech-tag">Course Design</span>
+                            <span class="tech-tag">Education</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 project-item" data-category="web" data-aos="fade-up" data-aos-delay="600">
-                    <div class="project-card">
-                        <div class="project-img">
-                            <i class="fas fa-code-branch"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Portfolio Website</h3>
-                            <p>Modern, responsive portfolio website with 3D animations, glassmorphism design, and advanced interactive features.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">HTML5</span>
-                                <span class="tech-tag">CSS3</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">Three.js</span>
+                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="600">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
                             </div>
+                        </div>
+                        <div class="project-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-category">Web Development</span>
+                            <span class="project-year">2025</span>
+                        </div>
+                        <h3>Modern Portfolio Website</h3>
+                        <p>Cutting-edge portfolio website with 3D animations, glassmorphism design, and advanced interactive features built with modern web technologies.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Responsive Design</span>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="700">
-                <a href="Curriculum Vitae [T. M. Mehrab Hasan].pdf" class="cta-button">
-                    <i class="fas fa-download me-2"></i>Download Resume
-                </a>
+    <!-- Publications Section -->
+    <section id="publications" class="section section-dark">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">RESEARCH</span>
+                <h2 class="section-title">Publications</h2>
+                <p class="section-subtitle">Contributing to academic research and knowledge sharing</p>
+            </div>
+            
+            <div class="publications-grid">
+                <div class="publication-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="publication-header">
+                        <div class="publication-type">Journal Paper</div>
+                        <div class="publication-status under-review">Under Review</div>
+                    </div>
+                    <div class="publication-content">
+                        <h3>Intelligent Investment Advisor: A Stacked ML-Based Investment Sector Recommendations with Explainable Insights</h3>
+                        <div class="publication-details">
+                            <div class="publication-journal">
+                                <i class="fas fa-book"></i>
+                                <span>Elsevier</span>
+                            </div>
+                            <div class="publication-date">
+                                <i class="fas fa-calendar"></i>
+                                <span>July 2025</span>
+                            </div>
+                        </div>
+                        <p>Proposed a stacked ensemble-based ML & DL framework for personalized investment sector recommendations while integrating explainable AI techniques to enhance transparency and user trust.</p>
+                        <div class="publication-keywords">
+                            <span class="keyword">Machine Learning</span>
+                            <span class="keyword">Explainable AI</span>
+                            <span class="keyword">Investment Analysis</span>
+                            <span class="keyword">Deep Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="publication-header">
+                        <div class="publication-type">Conference Paper</div>
+                        <div class="publication-status published">Published</div>
+                    </div>
+                    <div class="publication-content">
+                        <h3>Towards Cleaner Cities: A Smart IoT Solution for Managing Drainage Congestion in Bangladesh</h3>
+                        <div class="publication-details">
+                            <div class="publication-journal">
+                                <i class="fas fa-users"></i>
+                                <span>11th NSysS 2024</span>
+                            </div>
+                            <div class="publication-date">
+                                <i class="fas fa-calendar"></i>
+                                <span>December 2024</span>
+                            </div>
+                        </div>
+                        <p>Developed an IoT-based smart drainage system for real-time garbage detection, water level monitoring, and automated flow control with alerts via web and mobile platforms.</p>
+                        <div class="publication-keywords">
+                            <span class="keyword">IoT Systems</span>
+                            <span class="keyword">Smart Cities</span>
+                            <span class="keyword">Environmental Technology</span>
+                            <span class="keyword">Mobile Applications</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">RECOGNITION</span>
+                <h2 class="section-title">Awards & Achievements</h2>
+                <p class="section-subtitle">Recognition for academic excellence and professional development</p>
+            </div>
+            
+            <div class="achievements-grid">
+                <div class="achievement-card highlight" data-aos="fade-up" data-aos-delay="100">
+                    <div class="achievement-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-date">June 2025</div>
+                        <h3>Dean's Certificate & Dean's List</h3>
+                        <p>Selected for Dean's List for two consecutive semesters with outstanding academic performance</p>
+                        <div class="achievement-issuer">Gazipur Digital University</div>
+                    </div>
+                </div>
+
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="achievement-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-date">March 2024</div>
+                        <h3>Advanced Cybersecurity Program Certificate</h3>
+                        <p>Completed comprehensive cybersecurity training program</p>
+                        <div class="achievement-issuer">Team Matrix Elite Hackers</div>
+                    </div>
+                </div>
+
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-date">May 2023</div>
+                        <h3>3rd Runner Up - Upazila Science Fair</h3>
+                        <p>Achieved third place in regional science competition</p>
+                        <div class="achievement-issuer">Chandra, Gazipur</div>
+                    </div>
+                </div>
+
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="achievement-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-date">December 2023</div>
+                        <h3>21st Century Employability Skilling (Advanced)</h3>
+                        <p>Advanced certification in modern workplace skills</p>
+                        <div class="achievement-issuer">Wadhwani Foundation</div>
+                    </div>
+                </div>
+
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="achievement-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-date">August 2023</div>
+                        <h3>Introduction to Cloud Certificate</h3>
+                        <p>Foundational cloud computing certification</p>
+                        <div class="achievement-issuer">AWS Academy</div>
+                    </div>
+                </div>
+
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="achievement-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-date">October 2023</div>
+                        <h3>Cyber Security Training Certificate</h3>
+                        <p>Specialized training in cybersecurity practices</p>
+                        <div class="achievement-issuer">Creative IT Institute</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extracurricular Activities Section -->
+    <section id="activities" class="section section-dark">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">LEADERSHIP</span>
+                <h2 class="section-title">Extracurricular Activities</h2>
+                <p class="section-subtitle">Leadership roles and community involvement</p>
+            </div>
+            
+            <div class="activities-timeline">
+                <div class="activity-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="activity-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-period">May 2023 - Dec 2024</div>
+                        <h3>Deputy Organizing Secretary</h3>
+                        <h4>GDU Robotics Club</h4>
+                        <p>Assisted in planning and coordinating robotics events and workshops, while managing team logistics for smooth execution of technical programs.</p>
+                        <div class="activity-achievements">
+                            <span>Event Management</span>
+                            <span>Team Coordination</span>
+                            <span>Workshop Planning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="activity-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-period">March 2023 - May 2024</div>
+                        <h3>Executive Secretary</h3>
+                        <h4>GDU Programming Club</h4>
+                        <p>Led coding competitions and coordinated with team members to organize regular coding sessions and webinars for skill development.</p>
+                        <div class="activity-achievements">
+                            <span>Competition Management</span>
+                            <span>Webinar Organization</span>
+                            <span>Skill Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="activity-icon">
+                        <i class="fas fa-theater-masks"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-period">Jan 2023 - Dec 2024</div>
+                        <h3>Program Secretary</h3>
+                        <h4>GDU Cultural Club</h4>
+                        <p>Organized and managed cultural events, facilitating collaboration between student groups for successful execution of university programs.</p>
+                        <div class="activity-achievements">
+                            <span>Event Organization</span>
+                            <span>Student Collaboration</span>
+                            <span>Cultural Programs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="activity-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-period">July 2023 - Dec 2024</div>
+                        <h3>Korean Language Secretary</h3>
+                        <h4>GDU Language Club</h4>
+                        <p>Managed communication and coordinated activities between club members and external partners, organizing Korean language learning sessions.</p>
+                        <div class="activity-achievements">
+                            <span>Language Education</span>
+                            <span>International Coordination</span>
+                            <span>Learning Sessions</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -308,55 +977,94 @@
     <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="contact-form" data-aos="fade-up" data-aos-delay="200">
-                        <form id="contactForm">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <input type="text" class="form-control" placeholder="Your Name" name="entry.166786655" required>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">GET IN TOUCH</span>
+                <h2 class="section-title">Let's Work Together</h2>
+                <p class="section-subtitle">Ready to bring your ideas to life with cutting-edge technology</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-form-container" data-aos="fade-up" data-aos-delay="200">
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" name="entry.1234567890" class="form-control" placeholder="John Doe" required>
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <input type="email" class="form-control" placeholder="Your Email" name="entry.101374180" required>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="entry.0987654321" class="form-control" placeholder="john@example.com" required>
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <textarea class="form-control" rows="5" placeholder="Your Message" name="entry.779883203" required></textarea>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="entry.1357924680" class="form-control" placeholder="Project Discussion" required>
                             </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="entry.1122334455" class="form-control" rows="6" placeholder="Tell me about your project or inquiry..." required></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-primary">
+                                    <span>Send Message</span>
+                                    <i class="fas fa-paper-plane"></i>
                                 </button>
                             </div>
                         </form>
                         <div class="success-message" id="successMessage">
-                            <i class="fas fa-check-circle me-2"></i>Thank you! Your message has been sent successfully.
+                            <div class="success-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h3>Message Sent Successfully!</h3>
+                            <p>Thank you for reaching out. I'll get back to you within 24 hours.</p>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="row mt-5">
-                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="300">
-                    <div class="contact-info glass p-4">
-                        <i class="fas fa-envelope fa-2x mb-3" style="color: var(--primary-color);"></i>
-                        <h5>Email</h5>
+            <div class="contact-info-grid" data-aos="fade-up" data-aos-delay="400">
+                <div class="contact-info-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
                         <p>mehrabratul210524@gmail.com</p>
+                        <a href="mailto:mehrabratul210524@gmail.com" class="contact-link">Send Email</a>
                     </div>
                 </div>
-                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="400">
-                    <div class="contact-info glass p-4">
-                        <i class="fas fa-phone fa-2x mb-3" style="color: var(--primary-color);"></i>
-                        <h5>Phone</h5>
+                
+                <div class="contact-info-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Phone</h4>
                         <p>+8801568901285</p>
+                        <a href="tel:+8801568901285" class="contact-link">Call Now</a>
                     </div>
                 </div>
-                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="500">
-                    <div class="contact-info glass p-4">
-                        <i class="fas fa-map-marker-alt fa-2x mb-3" style="color: var(--primary-color);"></i>
-                        <h5>Location</h5>
-                        <p>Dhaka, Bangladesh</p>
+                
+                <div class="contact-info-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Location</h4>
+                        <p>Eastern Housing, Mirpur<br>Dhaka, Bangladesh</p>
+                        <a href="#" class="contact-link">View Map</a>
+                    </div>
+                </div>
+                
+                <div class="contact-info-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Website</h4>
+                        <p>tm-mehrab-hasan.github.io</p>
+                        <a href="https://tm-mehrab-hasan.github.io" target="_blank" class="contact-link">Visit Site</a>
                     </div>
                 </div>
             </div>
@@ -366,25 +1074,71 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="social-links mb-4" data-aos="fade-up">
-                <a href="https://github.com/tm-mehrab-hasan" target="_blank">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://linkedin.com/in/TM-Mehrab-Hasan" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://tm-mehrab-hasan.github.io" target="_blank">
-                    <i class="fas fa-globe"></i>
-                </a>
-                <a href="mailto:tmmehrabhasan@gmail.com">
-                    <i class="fas fa-envelope"></i>
-                </a>
+            <div class="footer-content">
+                <div class="footer-brand" data-aos="fade-up">
+                    <div class="brand-logo">TM</div>
+                    <h3>T. M. Mehrab Hasan</h3>
+                    <p>IoT & Robotics Engineer creating intelligent solutions for tomorrow's challenges</p>
+                </div>
+                
+                <div class="footer-links" data-aos="fade-up" data-aos-delay="200">
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#publications">Publications</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">IoT Development</a></li>
+                            <li><a href="#">Robotics Engineering</a></li>
+                            <li><a href="#">Web Development</a></li>
+                            <li><a href="#">Machine Learning</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            <a href="https://github.com/tm-mehrab-hasan" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/TM-Mehrab-Hasan" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://tm-mehrab-hasan.github.io" target="_blank">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                            <a href="mailto:mehrabratul210524@gmail.com">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p data-aos="fade-up" data-aos-delay="200">
-                &copy; 2025 T. M. Mehrab Hasan. Crafted with passion and innovation.
-            </p>
+            
+            <div class="footer-bottom" data-aos="fade-up" data-aos-delay="400">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p>&copy; 2025 T. M. Mehrab Hasan. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>Crafted with passion and innovation</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
