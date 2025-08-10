@@ -6,6 +6,11 @@
     <title>T. M. Mehrab Hasan - IoT & Robotics Engineer | Portfolio</title>
     <meta name="description" content="IoT & Robotics Engineer specializing in intelligent systems, web development, and machine learning solutions.">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    
     <!-- Bootstrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
@@ -28,7 +33,9 @@
     <!-- Preloader -->
     <div class="preloader" id="preloader">
         <div class="preloader-content">
-            <div class="logo-preloader">TM</div>
+            <div class="logo-preloader">
+                <img src="images/logo.png" alt="TM Logo" style="width: 80px; height: 80px; object-fit: contain;">
+            </div>
             <div class="loading-text">Loading Portfolio...</div>
             <div class="loading-bar">
                 <div class="loading-progress"></div>
@@ -73,7 +80,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero" class="hero-section">
+    <section id="home" class="hero-section">
         <div id="three-container"></div>
         <div class="hero-gradient"></div>
         <div class="container">
@@ -103,7 +110,7 @@
                                 <div class="stat-label">Projects</div>
                             </div>
                             <div class="stat-item">
-                                <div class="stat-number">5</div>
+                                <div class="stat-number">5+</div>
                                 <div class="stat-label">Publications</div>
                             </div>
                         </div>
@@ -143,14 +150,20 @@
                             </div>
                             <div class="bento-item">
                                 <div class="bento-content">
+                                    <i class="fas fa-code"></i>
+                                    <h4>Python & C++ Dev</h4>
+                                </div>
+                            </div>
+                            <div class="bento-item">
+                                <div class="bento-content">
                                     <i class="fas fa-mobile-alt"></i>
-                                    <h4>Mobile</h4>
+                                    <h4>Mobile Apps</h4>
                                 </div>
                             </div>
                             <div class="bento-item">
                                 <div class="bento-content">
                                     <i class="fas fa-database"></i>
-                                    <h4>Database</h4>
+                                    <h4>Database Manage</h4>
                                 </div>
                             </div>
                         </div>
@@ -224,11 +237,20 @@
                                 <span>Download CV</span>
                             </a>
                             <div class="social-links">
-                                <a href="https://github.com/tm-mehrab-hasan" target="_blank">
+                                <a href="https://github.com/TM-Mehrab-Hasan" target="_blank">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="https://linkedin.com/in/TM-Mehrab-Hasan" target="_blank">
+                                <a href="https://www.linkedin.com/in/tm-mehrab-hasan/" target="_blank">
                                     <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://www.behance.net/tmmehrabhasanratul" target="_blank">
+                                    <i class="fab fa-behance"></i>
+                                </a>
+                                <a href="https://www.facebook.com/t.m.mehrab.ratul" target="_blank">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="https://orcid.org/0009-0007-0523-7575" target="_blank">
+                                    <i class="fab fa-orcid"></i>
                                 </a>
                                 <a href="https://tm-mehrab-hasan.github.io" target="_blank">
                                     <i class="fas fa-globe"></i>
@@ -247,7 +269,7 @@
             <div class="section-header" data-aos="fade-up">
                 <span class="section-badge">LEARNING JOURNEY</span>
                 <h2 class="section-title">Education</h2>
-                <p class="section-subtitle">Academic foundation in engineering and technology</p>
+                <p class="section-subtitle">Academic foundation in Engineering and Technology</p>
             </div>
             <div class="timeline" data-aos="fade-up" data-aos-delay="200">
                 <div class="timeline-item">
@@ -296,16 +318,44 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
+ <!-- Experience Section -->
     <section id="experience" class="section">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <span class="section-badge">CAREER PATH</span>
                 <h2 class="section-title">Work Experience</h2>
-                <p class="section-subtitle">Professional journey in technology and innovation</p>
+                <p class="section-subtitle">Professional journey in Technology and Innovation</p>
             </div>
             <div class="experience-grid">
                 <div class="experience-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="experience-header">
+                        <div class="company-info">
+                            <h3>Support Developer</h3>
+                            <h4>BFIN IT PVT LTD</h4>
+                            <div class="experience-period">August 2025 - Current</div>
+                        </div>
+                        <div class="company-logo">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                    </div>
+                    <div class="experience-content">
+                        <p>Providing technical support and development services, working on software solutions and system maintenance with focus on client satisfaction.</p>
+                        <ul class="experience-achievements">
+                            <li>Delivering technical support for software applications and systems</li>
+                            <li>Developing and maintaining software solutions for client requirements</li>
+                            <li>Troubleshooting and resolving technical issues efficiently</li>
+                            <li>Collaborating with development teams to enhance system performance</li>
+                        </ul>
+                        <div class="experience-tags">
+                            <span class="tag">Technical Support</span>
+                            <span class="tag">Software Development</span>
+                            <span class="tag">System Maintenance</span>
+                            <span class="tag">Client Support</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="experience-header">
                         <div class="company-info">
                             <h3>Django (Python) Intern</h3>
@@ -313,26 +363,27 @@
                             <div class="experience-period">July 2025 - Current</div>
                         </div>
                         <div class="company-logo">
-                            <i class="fas fa-robot"></i>
+                            <i class="fas fa-code"></i>
                         </div>
                     </div>
                     <div class="experience-content">
-                        <p>Leading Django (python) development and backend development with authentication and Restful APIs.</p>
+                        <p>Leading Django (Python) development and backend development with authentication and RESTful APIs.</p>
                         <ul class="experience-achievements">
-                            <li>Designed and optimized relational database models, queries, and migrations for scalable performance.</li>
-                            <li>Integrated RESTful APIs and third party services to support real-time data communication.</li>
-                            <li>Implemented authentication, authorization, and security best practices to safeguard user data.</li>
+                            <li>Designed and optimized relational database models, queries, and migrations for scalable performance</li>
+                            <li>Integrated RESTful APIs and third-party services to support real-time data communication</li>
+                            <li>Implemented authentication, authorization, and security best practices to safeguard user data</li>
+                            <li>Developed robust backend systems using Django framework and Python</li>
                         </ul>
                         <div class="experience-tags">
-                            <span class="tag">Robotics</span>
-                            <span class="tag">Embedded Systems</span>
-                            <span class="tag">IoT Integration</span>
-                            <span class="tag">Course Development</span>
+                            <span class="tag">Django</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">REST APIs</span>
+                            <span class="tag">Database Design</span>
                         </div>
                     </div>
                 </div>
-            <div class="experience-grid">
-                <div class="experience-card" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="experience-header">
                         <div class="company-info">
                             <h3>Robotics & Embedded System Engineer</h3>
@@ -360,7 +411,7 @@
                     </div>
                 </div>
 
-                <div class="experience-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="experience-header">
                         <div class="company-info">
                             <h3>Lead Web Developer</h3>
@@ -397,148 +448,419 @@
             <div class="section-header" data-aos="fade-up">
                 <span class="section-badge">EXPERTISE</span>
                 <h2 class="section-title">Skills & Technologies</h2>
-                <p class="section-subtitle">Comprehensive toolkit for modern technology development</p>
+                <p class="section-subtitle">Interactive showcase of my technical expertise and proficiency levels</p>
             </div>
             
-            <div class="skills-container">
-                <div class="skills-category" data-aos="fade-up" data-aos-delay="100">
-                    <h3>Programming Languages</h3>
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <div class="skill-icon"><i class="fab fa-python"></i></div>
-                            <div class="skill-info">
-                                <h4>Python</h4>
-                                <div class="skill-level">
-                                    <div class="skill-progress" data-width="95"></div>
-                                </div>
-                            </div>
+            <!-- Skills Filter Navigation -->
+            <div class="skills-nav" data-aos="fade-up" data-aos-delay="100">
+                <button class="skills-nav-btn active" data-category="all">
+                    <i class="fas fa-layer-group"></i>
+                    <span>All Skills</span>
+                </button>
+                <button class="skills-nav-btn" data-category="frontend">
+                    <i class="fas fa-palette"></i>
+                    <span>Frontend</span>
+                </button>
+                <button class="skills-nav-btn" data-category="backend">
+                    <i class="fas fa-server"></i>
+                    <span>Backend</span>
+                </button>
+                <button class="skills-nav-btn" data-category="iot">
+                    <i class="fas fa-microchip"></i>
+                    <span>IoT & Hardware</span>
+                </button>
+                <button class="skills-nav-btn" data-category="tools">
+                    <i class="fas fa-tools"></i>
+                    <span>Tools & Others</span>
+                </button>
+            </div>
+
+            <!-- Interactive Skills Grid -->
+            <div class="skills-interactive-grid" data-aos="fade-up" data-aos-delay="200">
+                <!-- Frontend Skills -->
+                <div class="skill-card-modern featured" data-category="frontend" data-skill="html">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fab fa-html5"></i>
+                            <div class="skill-glow"></div>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-icon"><i class="fas fa-code"></i></div>
-                            <div class="skill-info">
-                                <h4>C/C++</h4>
-                                <div class="skill-level">
-                                    <div class="skill-progress" data-width="90"></div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">HTML5</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">95%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="95"></div>
                                 </div>
                             </div>
+                            <div class="skill-experience">5+ years</div>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-icon"><i class="fab fa-js"></i></div>
-                            <div class="skill-info">
-                                <h4>JavaScript</h4>
-                                <div class="skill-level">
-                                    <div class="skill-progress" data-width="88"></div>
-                                </div>
-                            </div>
+                        <div class="skill-hover-info">
+                            <p>Semantic markup, accessibility, modern HTML5 APIs</p>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-icon"><i class="fab fa-php"></i></div>
-                            <div class="skill-info">
-                                <h4>PHP</h4>
-                                <div class="skill-level">
-                                    <div class="skill-progress" data-width="85"></div>
+                        <div class="skill-specialty-badge">Specialty</div>
+                    </div>
+                </div>
+
+                <div class="skill-card-modern featured" data-category="frontend" data-skill="css">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fab fa-css3-alt"></i>
+                            <div class="skill-glow"></div>
+                        </div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">CSS3</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">93%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="93"></div>
                                 </div>
                             </div>
+                            <div class="skill-experience">5+ years</div>
+                        </div>
+                        <div class="skill-hover-info">
+                            <p>Animations, Grid, Flexbox, Responsive Design</p>
+                        </div>
+                        <div class="skill-specialty-badge">Specialty</div>
+                    </div>
+                </div>
+
+                <div class="skill-card-modern" data-category="frontend" data-skill="javascript">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fab fa-js-square"></i>
+                            <div class="skill-glow"></div>
+                        </div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">JavaScript</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">90%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="88"></div>
+                                </div>
+                            </div>
+                            <div class="skill-experience">4+ years</div>
+                        </div>
+                        <div class="skill-hover-info">
+                            <p>ES6+, DOM manipulation, Async programming</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="skills-category" data-aos="fade-up" data-aos-delay="200">
-                    <h3>Web Technologies</h3>
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <div class="skill-icon"><i class="fab fa-react"></i></div>
-                            <div class="skill-info">
-                                <h4>React JS</h4>
-                                <div class="skill-level">
-                                    <div class="skill-progress" data-width="92"></div>
-                                </div>
-                            </div>
+                <div class="skill-card-modern" data-category="frontend" data-skill="react">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fab fa-react"></i>
+                            <div class="skill-glow"></div>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-icon"><i class="fab fa-html5"></i></div>
-                            <div class="skill-info">
-                                <h4>HTML/CSS</h4>
-                                <div class="skill-level">
-                                    <div class="skill-progress" data-width="95"></div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">React</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">80%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="92"></div>
                                 </div>
                             </div>
+                            <div class="skill-experience">2+ years</div>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-icon"><i class="fas fa-server"></i></div>
-                            <div class="skill-info">
-                                <h4>Django</h4>
-                                <div class="skill-level">
-                                    <div class="skill-progress" data-width="88"></div>
-                                </div>
-                            </div>
+                        <div class="skill-hover-info">
+                            <p>Hooks, Context API, Component architecture</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="skills-category" data-aos="fade-up" data-aos-delay="300">
-                    <h3>Databases</h3>
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <div class="skill-icon"><i class="fas fa-database"></i></div>
-                            <div class="skill-info">
-                                <h4>MySQL</h4>
-                                <div class="skill-level">
-                                    <div class="skill-progress" data-width="90"></div>
-                                </div>
-                            </div>
+                <!-- Backend Skills -->
+                <div class="skill-card-modern featured" data-category="backend" data-skill="python">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fab fa-python"></i>
+                            <div class="skill-glow"></div>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-icon"><i class="fas fa-leaf"></i></div>
-                            <div class="skill-info">
-                                <h4>MongoDB</h4>
-                                <div class="skill-level">
-                                    <div class="skill-progress" data-width="85"></div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">Python</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">95%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="95"></div>
                                 </div>
                             </div>
+                            <div class="skill-experience">4+ years</div>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-icon"><i class="fas fa-fire"></i></div>
-                            <div class="skill-info">
-                                <h4>Firebase</h4>
-                                <div class="skill-level">
-                                    <div class="skill-progress" data-width="88"></div>
+                        <div class="skill-hover-info">
+                            <p>Django, Flask, Data Science, Automation</p>
+                        </div>
+                        <div class="skill-specialty-badge">Specialty</div>
+                    </div>
+                </div>
+
+                <div class="skill-card-modern" data-category="backend" data-skill="django">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fas fa-server"></i>
+                            <div class="skill-glow"></div>
+                        </div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">Django</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">88%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="88"></div>
                                 </div>
                             </div>
+                            <div class="skill-experience">2+ years</div>
+                        </div>
+                        <div class="skill-hover-info">
+                            <p>REST APIs, Authentication, ORM</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="skills-category" data-aos="fade-up" data-aos-delay="400">
-                    <h3>IoT & Hardware</h3>
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <div class="skill-icon"><i class="fas fa-microchip"></i></div>
-                            <div class="skill-info">
-                                <h4>Arduino</h4>
-                                <div class="skill-level">
-                                    <div class="skill-progress" data-width="93"></div>
+                <div class="skill-card-modern featured" data-category="backend" data-skill="cpp">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fas fa-code"></i>
+                            <div class="skill-glow"></div>
+                        </div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">C/C++</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">90%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="90"></div>
                                 </div>
                             </div>
+                            <div class="skill-experience">4+ years</div>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-icon"><i class="fas fa-robot"></i></div>
-                            <div class="skill-info">
-                                <h4>Embedded Systems</h4>
-                                <div class="skill-level">
-                                    <div class="skill-progress" data-width="87"></div>
+                        <div class="skill-hover-info">
+                            <p>System programming, Embedded systems</p>
+                        </div>
+                        <div class="skill-specialty-badge">Specialty</div>
+                    </div>
+                </div>
+
+                <div class="skill-card-modern featured" data-category="backend" data-skill="php">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fab fa-php"></i>
+                            <div class="skill-glow"></div>
+                        </div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">PHP</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">92%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="85"></div>
                                 </div>
                             </div>
+                            <div class="skill-experience">3+ years</div>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-icon"><i class="fas fa-wifi"></i></div>
-                            <div class="skill-info">
-                                <h4>IoT Integration</h4>
-                                <div class="skill-level">
-                                    <div class="skill-progress" data-width="90"></div>
+                        <div class="skill-hover-info">
+                            <p>Web development, Database integration</p>
+                        </div>
+                        <div class="skill-specialty-badge">Specialty</div>
+                    </div>
+                </div>
+
+                <!-- Database Skills -->
+                <div class="skill-card-modern" data-category="backend" data-skill="mysql">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fas fa-database"></i>
+                            <div class="skill-glow"></div>
+                        </div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">MySQL</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">90%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="90"></div>
                                 </div>
                             </div>
+                            <div class="skill-experience">3+ years</div>
                         </div>
+                        <div class="skill-hover-info">
+                            <p>Query optimization, Database design</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card-modern" data-category="backend" data-skill="mongodb">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fas fa-leaf"></i>
+                            <div class="skill-glow"></div>
+                        </div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">MongoDB</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">82%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-experience">2+ years</div>
+                        </div>
+                        <div class="skill-hover-info">
+                            <p>NoSQL, Aggregation, Document design</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card-modern" data-category="backend" data-skill="firebase">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fas fa-fire"></i>
+                            <div class="skill-glow"></div>
+                        </div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">Firebase</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">90%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="88"></div>
+                                </div>
+                            </div>
+                            <div class="skill-experience">2+ years</div>
+                        </div>
+                        <div class="skill-hover-info">
+                            <p>Realtime database, Authentication, Hosting</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IoT & Hardware Skills -->
+                <div class="skill-card-modern featured" data-category="iot" data-skill="arduino">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fas fa-microchip"></i>
+                            <div class="skill-glow"></div>
+                        </div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">Arduino</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">93%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="93"></div>
+                                </div>
+                            </div>
+                            <div class="skill-experience">3+ years</div>
+                        </div>
+                        <div class="skill-hover-info">
+                            <p>Sensors, Actuators, IoT prototyping</p>
+                        </div>
+                        <div class="skill-specialty-badge">Specialty</div>
+                    </div>
+                </div>
+
+                <div class="skill-card-modern featured" data-category="iot" data-skill="embedded">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fas fa-robot"></i>
+                            <div class="skill-glow"></div>
+                        </div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">Embedded Systems</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">92%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="87"></div>
+                                </div>
+                            </div>
+                            <div class="skill-experience">3+ years</div>
+                        </div>
+                        <div class="skill-hover-info">
+                            <p>Microcontrollers, Real-time systems</p>
+                        </div>
+                        <div class="skill-specialty-badge">Specialty</div>
+                    </div>
+                </div>
+
+                <div class="skill-card-modern featured" data-category="iot" data-skill="iot">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fas fa-wifi"></i>
+                            <div class="skill-glow"></div>
+                        </div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">IoT Integration</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">95%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-experience">3+ years</div>
+                        </div>
+                        <div class="skill-hover-info">
+                            <p>Wireless protocols, Cloud integration</p>
+                        </div>
+                        <div class="skill-specialty-badge">Specialty</div>
+                    </div>
+                </div>
+
+                <!-- Tools & Others -->
+                <div class="skill-card-modern" data-category="tools" data-skill="git">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fab fa-git-alt"></i>
+                            <div class="skill-glow"></div>
+                        </div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">Git</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">90%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="92"></div>
+                                </div>
+                            </div>
+                            <div class="skill-experience">2+ years</div>
+                        </div>
+                        <div class="skill-hover-info">
+                            <p>Version control, Collaboration</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card-modern" data-category="tools" data-skill="linux">
+                    <div class="skill-card-inner">
+                        <div class="skill-icon-modern">
+                            <i class="fab fa-linux"></i>
+                            <div class="skill-glow"></div>
+                        </div>
+                        <div class="skill-content">
+                            <h4 class="skill-name">Linux</h4>
+                            <div class="skill-level-container">
+                                <div class="skill-percentage">80%</div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-width="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-experience">2+ years</div>
+                        </div>
+                        <div class="skill-hover-info">
+                            <p>System administration, Shell scripting</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Summary Stats -->
+            <div class="skills-stats" data-aos="fade-up" data-aos-delay="400">
+                <div class="skills-summary">
+                    <div class="stats-item">
+                        <div class="stats-number" id="totalSkills">16</div>
+                        <div class="stats-label">Technologies</div>
+                    </div>
+                    <div class="stats-item">
+                        <div class="stats-number" id="avgExperience">3</div>
+                        <div class="stats-label">Avg Years Experience</div>
+                    </div>
+                    <div class="stats-item">
+                        <div class="stats-number" id="specialtySkills">8</div>
+                        <div class="stats-label">Specialty Areas</div>
+                    </div>
+                    <div class="stats-item">
+                        <div class="stats-number" id="avgProficiency">90</div>
+                        <div class="stats-label">Avg Proficiency %</div>
                     </div>
                 </div>
             </div>
@@ -568,7 +890,7 @@
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/TM-Mehrab-Hasan/Early-Stage-Fire-Detection-Robot" class="project-link"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                         <div class="project-icon">
@@ -597,7 +919,145 @@
                         </div>
                     </div>
                 </div>
+                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="600">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://moviesaviour.netlify.app/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/TM-Mehrab-Hasan/MovieSaviour_Website" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-category">Web Development</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3>MovieSaviour Website</h3>
+                        <p>A comprehensive movie discovery platform with advanced search functionality, user reviews, and personalized recommendations.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">API Integration</span>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="project-card" data-category="ml" data-aos="fade-up" data-aos-delay="700">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/TM-Mehrab-Hasan/Fake-News-Detection" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-category">Machine Learning</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3>Fake News Detection System</h3>
+                        <p>Machine learning-based system for detecting and classifying fake news using natural language processing and advanced ML algorithms.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">Jupyter</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="iot" data-aos="fade-up" data-aos-delay="800">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/TM-Mehrab-Hasan/Real-Time-Location-Tracker-Using-U-Blox-Neo-6m-GPS-Sensor-with-ESP8266" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-category">IoT</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3>Real-Time GPS Location Tracker</h3>
+                        <p>IoT-based location tracking system using U-Blox Neo-6m GPS sensor with ESP8266 for real-time location monitoring and data transmission.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">ESP8266</span>
+                            <span class="tech-tag">GPS Sensor</span>
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Real-time Data</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="iot" data-aos="fade-up" data-aos-delay="900">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/TM-Mehrab-Hasan/Real-Time-Water-Quality-Monitor-Using-ESP32-with-Local-Server" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-category">IoT</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3>Real-Time Water Quality Monitor</h3>
+                        <p>ESP32-based water quality monitoring system with local server integration for real-time analysis of pH, turbidity, and other water parameters.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">ESP32</span>
+                            <span class="tech-tag">Water Sensors</span>
+                            <span class="tech-tag">Local Server</span>
+                            <span class="tech-tag">C++</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="1000">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://tm-mehrab-hasan.github.io" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/TM-Mehrab-Hasan/TM-Mehrab-Hasan.github.io" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-category">Web Development</span>
+                            <span class="project-year">2025</span>
+                        </div>
+                        <h3>Modern Portfolio Website</h3>
+                        <p>Cutting-edge portfolio website with 3D animations, glassmorphism design, and advanced interactive features built with modern web technologies.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="project-card" data-category="iot ml" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-image">
                         <div class="project-overlay">
@@ -631,7 +1091,7 @@
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/TM-Mehrab-Hasan/Investment_Sector_Recommendation" class="project-link"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                         <div class="project-icon">
@@ -706,34 +1166,6 @@
                             <span class="tech-tag">Arduino</span>
                             <span class="tech-tag">Course Design</span>
                             <span class="tech-tag">Education</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="600">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                        <div class="project-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-meta">
-                            <span class="project-category">Web Development</span>
-                            <span class="project-year">2025</span>
-                        </div>
-                        <h3>Modern Portfolio Website</h3>
-                        <p>Cutting-edge portfolio website with 3D animations, glassmorphism design, and advanced interactive features built with modern web technologies.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Three.js</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Responsive Design</span>
                         </div>
                     </div>
                 </div>
@@ -1030,8 +1462,8 @@
                     </div>
                     <div class="contact-details">
                         <h4>Email</h4>
-                        <p>mehrabratul210524@gmail.com</p>
-                        <a href="mailto:mehrabratul210524@gmail.com" class="contact-link">Send Email</a>
+                        <p>tmmehrabhasan@gmail.com</p>
+                        <a href="mailto:tmmehrabhasan@gmail.com" class="contact-link">Send Email</a>
                     </div>
                 </div>
                 
@@ -1052,8 +1484,8 @@
                     </div>
                     <div class="contact-details">
                         <h4>Location</h4>
-                        <p>Eastern Housing, Mirpur<br>Dhaka, Bangladesh</p>
-                        <a href="#" class="contact-link">View Map</a>
+                        <p>Taltola Bazar, Eastern Housing, Mirpur-11.5<br>Dhaka, Bangladesh</p>
+                        <a href="https://www.google.com/maps/place/Taltola+Bazar/@23.8278718,90.3472009,17z/data=!3m1!4b1!4m6!3m5!1s0x3755c100798e82b5:0x2f74824c4ca3be6c!8m2!3d23.8278718!4d90.3497758!16s%2Fg%2F11wbvp1518?entry=ttu&g_ep=EgoyMDI1MDgwNi4wIKXMDSoASAFQAw%3D%3D" class="contact-link">View Map</a>
                     </div>
                 </div>
                 
@@ -1062,9 +1494,9 @@
                         <i class="fas fa-globe"></i>
                     </div>
                     <div class="contact-details">
-                        <h4>Website</h4>
-                        <p>tm-mehrab-hasan.github.io</p>
-                        <a href="https://tm-mehrab-hasan.github.io" target="_blank" class="contact-link">Visit Site</a>
+                        <h4>Linkedin</h4>
+                        <p>T. M. Mehrab Hasan</p>
+                        <a href="https://www.linkedin.com/in/tm-mehrab-hasan/" target="_blank" class="contact-link">Visit Profile</a>
                     </div>
                 </div>
             </div>
@@ -1105,16 +1537,25 @@
                     <div class="footer-section">
                         <h4>Connect</h4>
                         <div class="social-links">
-                            <a href="https://github.com/tm-mehrab-hasan" target="_blank">
+                            <a href="https://github.com/TM-Mehrab-Hasan" target="_blank">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="https://linkedin.com/in/TM-Mehrab-Hasan" target="_blank">
+                            <a href="https://www.linkedin.com/in/tm-mehrab-hasan/" target="_blank">
                                 <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.behance.net/tmmehrabhasanratul" target="_blank">
+                                <i class="fab fa-behance"></i>
+                            </a>
+                            <a href="https://www.facebook.com/t.m.mehrab.ratul" target="_blank">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://orcid.org/0009-0007-0523-7575" target="_blank">
+                                <i class="fab fa-orcid"></i>
                             </a>
                             <a href="https://tm-mehrab-hasan.github.io" target="_blank">
                                 <i class="fas fa-globe"></i>
                             </a>
-                            <a href="mailto:mehrabratul210524@gmail.com">
+                            <a href="mailto:tmmehrabhasan@gmail.com">
                                 <i class="fas fa-envelope"></i>
                             </a>
                         </div>

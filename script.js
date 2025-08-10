@@ -428,24 +428,227 @@ class PortfolioApp {
         setTimeout(type, 1000);
     }
 
-    // Skills Animation
+    // Skills Animation & Interaction
     initSkillsAnimation() {
-        const skillBars = document.querySelectorAll('.skill-progress');
+        const skillBars = document.querySelectorAll('.skill-fill');
+        const skillCards = document.querySelectorAll('.skill-card-modern');
+        const skillNavButtons = document.querySelectorAll('.skills-nav-btn');
         
+        // Animate skill bars when they come into view
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const progressBar = entry.target;
-                    const targetWidth = progressBar.getAttribute('data-width');
+                    const skillCard = entry.target;
+                    const progressBar = skillCard.querySelector('.skill-fill');
                     
-                    setTimeout(() => {
-                        progressBar.style.width = targetWidth + '%';
-                    }, 200);
+                    if (progressBar) {
+                        const targetWidth = progressBar.getAttribute('data-width');
+                        
+                        setTimeout(() => {
+                            progressBar.style.width = targetWidth + '%';
+                            // Add a glow effect when animating
+                            progressBar.style.boxShadow = `0 0 20px rgba(99, 102, 241, 0.5)`;
+                            
+                            // Remove glow after animation
+                            setTimeout(() => {
+                                progressBar.style.boxShadow = '';
+                            }, 1000);
+                        }, Math.random() * 300 + 100); // Staggered animation
+                    }
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        skillCards.forEach(card => observer.observe(card));
+        
+        // Skills category filtering
+        skillNavButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.getAttribute('data-category');
+                
+                // Update active button
+                skillNavButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Filter cards
+                skillCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    
+                    if (category === 'all' || cardCategory === category) {
+                        card.style.display = 'block';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, Math.random() * 200 + 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(-20px)';
+                        setTimeout(() => {
+                            if (card.style.opacity === '0') {
+                                card.style.display = 'none';
+                            }
+                        }, 300);
+                    }
+                });
+                
+                // Update stats based on visible skills
+                this.updateSkillsStats(category);
+            });
+        });
+        
+        // Enhanced hover effects for skill cards
+        skillCards.forEach(card => {
+            const skillIcon = card.querySelector('.skill-icon-modern i');
+            const skillGlow = card.querySelector('.skill-glow');
+            const hoverInfo = card.querySelector('.skill-hover-info');
+            
+            card.addEventListener('mouseenter', () => {
+                if (!this.isMobile) {
+                    // Icon animation
+                    if (skillIcon) {
+                        skillIcon.style.transform = 'scale(1.2) rotate(5deg)';
+                        skillIcon.style.filter = 'brightness(1.2)';
+                    }
+                    
+                    // Glow effect
+                    if (skillGlow) {
+                        skillGlow.style.opacity = '0.8';
+                        skillGlow.style.transform = 'scale(1.5)';
+                    }
+                    
+                    // Show hover info
+                    if (hoverInfo) {
+                        hoverInfo.style.opacity = '1';
+                        hoverInfo.style.transform = 'translateY(0)';
+                    }
+                    
+                    // Card transform
+                    card.style.transform = 'translateY(-10px) scale(1.02)';
+                    card.style.zIndex = '10';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                if (!this.isMobile) {
+                    // Reset icon
+                    if (skillIcon) {
+                        skillIcon.style.transform = 'scale(1) rotate(0deg)';
+                        skillIcon.style.filter = 'brightness(1)';
+                    }
+                    
+                    // Reset glow
+                    if (skillGlow) {
+                        skillGlow.style.opacity = '0.3';
+                        skillGlow.style.transform = 'scale(1)';
+                    }
+                    
+                    // Hide hover info
+                    if (hoverInfo) {
+                        hoverInfo.style.opacity = '0';
+                        hoverInfo.style.transform = 'translateY(10px)';
+                    }
+                    
+                    // Reset card
+                    card.style.transform = 'translateY(0) scale(1)';
+                    card.style.zIndex = '1';
+                }
+            });
+            
+            // Click effect for mobile
+            card.addEventListener('click', () => {
+                if (this.isMobile && hoverInfo) {
+                    const isVisible = hoverInfo.style.opacity === '1';
+                    hoverInfo.style.opacity = isVisible ? '0' : '1';
+                    hoverInfo.style.transform = isVisible ? 'translateY(10px)' : 'translateY(0)';
                 }
             });
         });
         
-        skillBars.forEach(bar => observer.observe(bar));
+        // Initialize with all skills visible
+        this.updateSkillsStats('all');
+    }
+    
+    // Update skills statistics based on visible skills
+    updateSkillsStats(category) {
+        const allCards = document.querySelectorAll('.skill-card-modern');
+        const visibleCards = category === 'all' 
+            ? allCards 
+            : document.querySelectorAll(`.skill-card-modern[data-category="${category}"]`);
+        
+        const totalSkillsEl = document.getElementById('totalSkills');
+        const avgExperienceEl = document.getElementById('avgExperience');
+        const specialtySkillsEl = document.getElementById('specialtySkills');
+        const avgProficiencyEl = document.getElementById('avgProficiency');
+        
+        if (!totalSkillsEl) return;
+        
+        // Calculate stats
+        let totalProficiency = 0;
+        let totalExperience = 0;
+        let specialtyCount = 0;
+        
+        visibleCards.forEach(card => {
+            const progressBar = card.querySelector('.skill-fill');
+            const experienceEl = card.querySelector('.skill-experience');
+            const isSpecialty = card.classList.contains('featured');
+            
+            if (progressBar) {
+                totalProficiency += parseInt(progressBar.getAttribute('data-width'));
+            }
+            
+            if (experienceEl) {
+                const experienceText = experienceEl.textContent;
+                const experienceValue = parseFloat(experienceText.match(/\d+\.?\d*/));
+                totalExperience += experienceValue || 0;
+            }
+            
+            if (isSpecialty) {
+                specialtyCount++;
+            }
+        });
+        
+        const count = visibleCards.length;
+        const avgProficiency = count > 0 ? Math.round(totalProficiency / count) : 0;
+        const avgExperience = count > 0 ? (totalExperience / count).toFixed(1) : 0;
+        
+        // Animate the numbers
+        this.animateNumber(totalSkillsEl, parseInt(totalSkillsEl.textContent), count);
+        this.animateNumber(avgExperienceEl, parseFloat(avgExperienceEl.textContent), avgExperience, true);
+        this.animateNumber(specialtySkillsEl, parseInt(specialtySkillsEl.textContent), specialtyCount);
+        this.animateNumber(avgProficiencyEl, parseInt(avgProficiencyEl.textContent), avgProficiency);
+    }
+    
+    // Animate number changes
+    animateNumber(element, startValue, endValue, isFloat = false) {
+        const duration = 1000;
+        const startTime = performance.now();
+        
+        const animate = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Use easing function for smooth animation
+            const easedProgress = 1 - Math.pow(1 - progress, 3);
+            
+            const currentValue = startValue + (endValue - startValue) * easedProgress;
+            
+            if (isFloat) {
+                element.textContent = currentValue.toFixed(1);
+            } else {
+                element.textContent = Math.round(currentValue);
+            }
+            
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            } else {
+                element.textContent = isFloat ? endValue.toString() : endValue.toString();
+            }
+        };
+        
+        requestAnimationFrame(animate);
     }
 
     // Project Filters
@@ -535,13 +738,47 @@ class PortfolioApp {
     }
 
     async simulateFormSubmission(formData) {
-        // Simulate network delay
-        return new Promise(resolve => {
-            setTimeout(() => {
-                console.log('Form data:', Object.fromEntries(formData));
-                resolve();
-            }, 2000);
+    // Google Forms submission
+    const GOOGLE_FORMS_URL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLScCWsiYcXmyevTx-D5Yy-9OqlloIaekXR1v_35TwPtFs9jo0w/formResponse';
+    
+    try {
+        // Create a new FormData for Google Forms
+        const googleFormData = new FormData();
+        
+        // Map form fields to Google Forms entry IDs (these match the ones in your HTML)
+        googleFormData.append('entry.166786655', formData.get('entry.166786655')); // name
+        googleFormData.append('entry.101374180', formData.get('entry.101374180')); // email
+        googleFormData.append('entry.1647048671', formData.get('entry.1647048671')); // subject
+        googleFormData.append('entry.779883203', formData.get('entry.779883203')); // message
+        
+        // Submit to Google Forms (note: this will likely be blocked by CORS, so we use a different approach)
+        const response = await fetch(GOOGLE_FORMS_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: googleFormData
         });
+        
+        // Since no-cors mode doesn't return response data, we assume success
+        return Promise.resolve();
+        
+        } catch (error) {
+            console.error('Google Forms submission error:', error);
+            
+            // Fallback: Send email using mailto (this will open the user's email client)
+            const emailData = {
+                name: formData.get('entry.166786655'),
+                email: formData.get('entry.101374180'),
+                subject: formData.get('entry.1647048671'),
+                message: formData.get('entry.779883203')
+            };
+            
+            const mailtoLink = `mailto:tmmehrabhasan@gmail.com?subject=${encodeURIComponent(emailData.subject)}&body=${encodeURIComponent(
+                `Name: ${emailData.name}\nEmail: ${emailData.email}\n\nMessage:\n${emailData.message}`
+            )}`;
+            
+            window.open(mailtoLink);
+            return Promise.resolve();
+        }
     }
 
     // Interactive Elements
