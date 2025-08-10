@@ -1390,301 +1390,155 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Projects Section */
-.project-filters {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-bottom: 3rem;
-}
-
-.filter-btn {
-    background: var(--bg-glass);
-    backdrop-filter: blur(var(--blur-sm));
-    border: 1px solid var(--border-primary);
-    color: var(--text-secondary);
-    padding: 0.5rem 1.25rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all var(--transition-normal);
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.project-card {
-    background: var(--bg-glass);
-    backdrop-filter: blur(var(--blur-sm));
-    border: 1px solid var(--border-primary);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    transition: all var(--transition-normal);
-    position: relative;
-}
-
-.project-card.featured {
-    grid-column: span 2;
-}
-
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
-    background: var(--bg-glass-hover);
-}
-
-.project-image {
-    height: 200px;
-    background: var(--gradient-primary);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.project-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity var(--transition-normal);
-}
-
-.project-card:hover .project-overlay {
-    opacity: 1;
-}
-
-.project-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.project-link {
-    width: 50px;
-    height: 50px;
-    background: var(--bg-glass);
-    backdrop-filter: blur(var(--blur-sm));
-    border: 1px solid var(--border-primary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: all var(--transition-normal);
-}
-
-.project-link:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: scale(1.1);
-}
-
-.project-icon {
-    font-size: 3rem;
-    color: white;
-    z-index: 1;
-}
-
-.featured-badge {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: var(--gradient-accent);
-    color: var(--bg-primary);
-    padding: 0.25rem 0.75rem;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    z-index: 2;
-}
-
-.project-content {
-    padding: 2rem;
-}
-
-.project-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.project-category {
-    font-size: 0.8rem;
-    color: var(--primary-color);
-    font-weight: 600;
-    font-family: var(--font-mono);
-}
-
-.project-year {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-}
-
-.project-content h3 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-}
-
-.project-content p {
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-}
-
-.project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.tech-tag {
-    background: var(--bg-secondary);
-    color: var(--text-secondary);
-    padding: 0.25rem 0.75rem;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    border: 1px solid var(--border-secondary);
-    transition: all var(--transition-normal);
-}
-
-.tech-tag:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: scale(1.05);
-}
-
-.project-achievements {
-    margin-top: 1rem;
-}
-
-.achievement {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--accent-color);
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
 /* Publications Section */
 .publications-grid {
     display: grid;
-    gap: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
 }
 
+/* Publication Cards */
 .publication-card {
     background: var(--bg-glass);
     backdrop-filter: blur(var(--blur-sm));
     border: 1px solid var(--border-primary);
     border-radius: var(--border-radius);
-    padding: 2rem;
+    padding: 1.5rem;
     transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
 }
 
 .publication-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
-    background: var(--bg-glass-hover);
+    border-color: var(--accent-color);
 }
 
+.publication-card.featured {
+    border: 2px solid var(--accent-color);
+    background: linear-gradient(135deg, var(--bg-glass) 0%, rgba(99, 102, 241, 0.05) 100%);
+}
+
+.publication-card.featured::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--gradient-primary);
+    border-radius: var(--border-radius);
+    z-index: -1;
+    opacity: 0.1;
+    filter: blur(8px);
+}
+
+/* Publication Header */
 .publication-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .publication-type {
-    background: var(--gradient-primary);
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 50px;
-    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.publication-type.journal {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+}
+
+.publication-type.conference {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+    color: white;
 }
 
 .publication-status {
-    padding: 0.25rem 0.75rem;
-    border-radius: 50px;
-    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.7rem;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .publication-status.published {
-    background: var(--success-color);
+    background: linear-gradient(135deg, #51cf66, #40c057);
     color: white;
 }
 
 .publication-status.under-review {
-    background: var(--warning-color);
-    color: var(--bg-primary);
+    background: linear-gradient(135deg, #ffd43b, #fab005);
+    color: #333;
 }
 
+.publication-status.submitted {
+    background: linear-gradient(135deg, #74c0fc, #339af0);
+    color: white;
+}
+
+/* Publication Content */
 .publication-content h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    margin-bottom: 1rem;
     color: var(--text-primary);
-    line-height: 1.3;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: unset;
+    overflow: hidden;
 }
 
 .publication-details {
     display: flex;
-    gap: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
     margin-bottom: 1rem;
 }
 
 .publication-journal,
-.publication-date {
+.publication-date,
+.publication-track {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
+    gap: 0.4rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
 }
 
 .publication-journal i,
-.publication-date i {
-    color: var(--primary-color);
+.publication-date i,
+.publication-track i {
+    color: var(--accent-color);
+    font-size: 0.9rem;
 }
 
 .publication-content p {
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
     line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: unset;
+    overflow: hidden;
 }
 
+/* Keywords */
 .publication-keywords {
     display: flex;
     flex-wrap: wrap;
@@ -1692,13 +1546,171 @@ body {
 }
 
 .keyword {
-    background: var(--bg-secondary);
-    color: var(--text-secondary);
-    padding: 0.25rem 0.75rem;
-    border-radius: 50px;
-    font-size: 0.8rem;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent-color);
+    padding: 0.3rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
-    border: 1px solid var(--border-secondary);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    transition: all var(--transition-fast);
+}
+
+.keyword:hover {
+    background: rgba(99, 102, 241, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Publications Statistics */
+.publications-stats {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-primary);
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem;
+    background: var(--bg-glass);
+    backdrop-filter: blur(var(--blur-sm));
+    border: 1px solid var(--border-primary);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-normal);
+}
+
+.stat-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    background: var(--bg-glass-hover);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .publications-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .publication-card {
+        padding: 1rem;
+    }
+    
+    .publication-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .publication-details {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .publication-content h3 {
+        font-size: 1rem;
+        -webkit-line-clamp: unset;
+        line-clamp: unset;
+    }
+    
+    .publication-content p {
+        -webkit-line-clamp: unset;
+        line-clamp: unset;
+    }
+    
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .stat-item {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .publication-card {
+        padding: 0.75rem;
+    }
+    
+    .publication-content h3 {
+        font-size: 0.95rem;
+    }
+    
+    .publication-content p {
+        font-size: 0.85rem;
+    }
+    
+    .keyword {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animation Enhancements */
+.publication-card[data-aos="fade-up"] {
+    transform: translateY(30px);
+    opacity: 0;
+}
+
+.publication-card[data-aos="fade-up"].aos-animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Hover Effects for Publication Cards */
+.publication-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
+}
+
+.publication-card:hover::after {
+    left: 100%;
+}
+
+/* Special styling for featured publications */
+.publication-card.featured .publication-content h3 {
+    color: var(--accent-color);
 }
 
 /* Achievements Section */
