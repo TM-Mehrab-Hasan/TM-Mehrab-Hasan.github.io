@@ -33,6 +33,11 @@ class PortfolioApp {
             this.initProjectFilters();
             this.initContactForm();
             this.initBackToTop();
+            this.initThemeToggle();
+            this.initBlogInteractions();
+            this.initKonamiCode();
+            this.initTestimonials();
+            this.initProjectDemos();
         });
 
         window.addEventListener('load', () => {
@@ -1117,23 +1122,397 @@ class PortfolioApp {
             document.head.appendChild(style);
         }
     }
-}
 
-// Initialize the app
-const portfolioApp = new PortfolioApp();
+    // Theme Toggle
+    initThemeToggle() {
+        const themeToggle = document.getElementById('themeToggle');
+        if (!themeToggle) return;
 
-// Additional utility functions for global use
-window.portfolioUtils = {
-    smoothScrollTo: (element) => {
-        if (typeof element === 'string') {
-            element = document.querySelector(element);
+        // Load saved theme or default to dark
+        const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('portfolio-theme', newTheme);
+            
+            // Update Three.js scene colors if it exists
+            this.updateThreeJSColors(newTheme);
+            
+            // Add a nice transition effect
+            themeToggle.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                themeToggle.style.transform = 'scale(1)';
+            }, 150);
+        });
+    }
+
+    updateThreeJSColors(theme) {
+        if (!this.threeScene) return;
+        
+        // Update particle colors based on theme
+        const isDark = theme === 'dark';
+        const particleColor = isDark ? 0x6366f1 : 0x3b82f6;
+        
+        // This would be implemented based on your Three.js setup
+        // For now, just a placeholder for the functionality
+    }
+
+    // Blog Interactions
+    initBlogInteractions() {
+        const blogCards = document.querySelectorAll('.blog-card');
+        
+        blogCards.forEach(card => {
+            // Add interactive card class
+            card.classList.add('interactive-card');
+            
+            // Add click animation
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('.read-more')) {
+                    const readMoreLink = card.querySelector('.read-more');
+                    if (readMoreLink) {
+                        // Add ripple effect
+                        this.createRipple(card, e);
+                        
+                        // Simulate click on read more
+                        setTimeout(() => {
+                            readMoreLink.click();
+                        }, 200);
+                    }
+                }
+            });
+            
+            // Add floating animation to featured cards
+            if (card.classList.contains('featured')) {
+                card.classList.add('float-animation');
+            }
+        });
+    }
+
+    createRipple(element, event) {
+        const ripple = document.createElement('span');
+        const rect = element.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = event.clientX - rect.left - size / 2;
+        const y = event.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}px;
+            top: ${y}px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-animation 0.6s ease-out;
+            pointer-events: none;
+            z-index: 1;
+        `;
+        
+        element.style.position = 'relative';
+        element.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+    }
+
+    // Easter Egg - Konami Code
+    initKonamiCode() {
+        const konamiCode = [
+            'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+            'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+            'KeyB', 'KeyA'
+        ];
+        let userInput = [];
+
+        document.addEventListener('keydown', (e) => {
+            userInput.push(e.code);
+            if (userInput.length > konamiCode.length) {
+                userInput.shift();
+            }
+
+            if (userInput.join(',') === konamiCode.join(',')) {
+                this.activateEasterEgg();
+                userInput = [];
+            }
+        });
+    }
+
+    activateEasterEgg() {
+        // Add rainbow colors to particles
+        document.body.style.animation = 'rainbow-background 2s ease-in-out';
+        
+        // Show special message
+        this.showNotification('🎉 Konami Code activated! You found the easter egg!', 'success');
+        
+        // Add special CSS for rainbow effect
+        if (!document.getElementById('easter-egg-styles')) {
+            const style = document.createElement('style');
+            style.id = 'easter-egg-styles';
+            style.textContent = `
+                @keyframes rainbow-background {
+                    0% { filter: hue-rotate(0deg); }
+                    25% { filter: hue-rotate(90deg); }
+                    50% { filter: hue-rotate(180deg); }
+                    75% { filter: hue-rotate(270deg); }
+                    100% { filter: hue-rotate(360deg); }
+                }
+                
+                @keyframes ripple-animation {
+                    to {
+                        transform: scale(2);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
         }
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        setTimeout(() => {
+            document.body.style.animation = '';
+        }, 2000);
+    }
+
+    // Testimonials Carousel
+    initTestimonials() {
+        this.currentTestimonialIndex = 0;
+        this.testimonialInterval = null;
+        
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        if (testimonials.length === 0) return;
+
+        // Auto-rotate testimonials
+        this.testimonialInterval = setInterval(() => {
+            this.nextTestimonial();
+        }, 5000);
+
+        // Pause on hover
+        const carousel = document.querySelector('.testimonials-carousel');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(this.testimonialInterval);
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                this.testimonialInterval = setInterval(() => {
+                    this.nextTestimonial();
+                }, 5000);
+            });
         }
-    },
-    
-    showNotification: (message, type = 'info') => {
+    }
+
+    showTestimonial(index) {
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        const dots = document.querySelectorAll('.nav-dots .dot');
+        
+        testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        if (testimonials[index] && dots[index]) {
+            testimonials[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+        
+        this.currentTestimonialIndex = index;
+    }
+
+    nextTestimonial() {
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        const nextIndex = (this.currentTestimonialIndex + 1) % testimonials.length;
+        this.showTestimonial(nextIndex);
+    }
+
+    previousTestimonial() {
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        const prevIndex = this.currentTestimonialIndex === 0 ? testimonials.length - 1 : this.currentTestimonialIndex - 1;
+        this.showTestimonial(prevIndex);
+    }
+
+    currentTestimonial(index) {
+        this.showTestimonial(index);
+    }
+
+    // Project Demos
+    initProjectDemos() {
+        const demoLinks = document.querySelectorAll('.demo-link');
+        
+        demoLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const demoType = link.dataset.demo;
+                this.openProjectDemo(demoType);
+            });
+        });
+    }
+
+    openProjectDemo(demoType) {
+        // Create modal if it doesn't exist
+        let modal = document.getElementById('demo-modal');
+        if (!modal) {
+            modal = this.createDemoModal();
+        }
+
+        const demoContent = this.getDemoContent(demoType);
+        modal.querySelector('.demo-video').innerHTML = demoContent;
+        modal.classList.add('active');
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+    }
+
+    createDemoModal() {
+        const modal = document.createElement('div');
+        modal.id = 'demo-modal';
+        modal.className = 'demo-modal';
+        modal.innerHTML = `
+            <div class="demo-content">
+                <button class="demo-close" onclick="portfolioApp.closeDemoModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="demo-video"></div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Close on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                this.closeDemoModal();
+            }
+        });
+        
+        return modal;
+    }
+
+    getDemoContent(demoType) {
+        const demos = {
+            'fire-robot': `
+                <div style="text-align: center; padding: 2rem;">
+                    <h3 style="color: var(--text-primary); margin-bottom: 1rem;">🔥 Fire Detection Robot Demo</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                        This autonomous robot uses multiple sensors to detect fire and automatically deploy water sprinklers.
+                        Featured at the 57th International Education Expo 2023.
+                    </p>
+                    <div style="background: var(--bg-primary); padding: 2rem; border-radius: 10px; margin-bottom: 1rem;">
+                        <i class="fas fa-robot" style="font-size: 4rem; color: var(--primary-color);"></i>
+                        <p style="margin-top: 1rem; color: var(--text-secondary);">Interactive demo coming soon!</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <span style="background: var(--bg-glass); padding: 0.5rem 1rem; border-radius: 20px; color: var(--text-secondary);">Arduino Uno</span>
+                        <span style="background: var(--bg-glass); padding: 0.5rem 1rem; border-radius: 20px; color: var(--text-secondary);">Flame Sensors</span>
+                        <span style="background: var(--bg-glass); padding: 0.5rem 1rem; border-radius: 20px; color: var(--text-secondary);">Water Pump</span>
+                        <span style="background: var(--bg-glass); padding: 0.5rem 1rem; border-radius: 20px; color: var(--text-secondary);">Wireless Control</span>
+                    </div>
+                </div>
+            `
+        };
+        
+        return demos[demoType] || '<p>Demo content not available</p>';
+    }
+
+    closeDemoModal() {
+        const modal = document.getElementById('demo-modal');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    // Certificate Viewer
+    viewCertificate(filePath) {
+        // Check if it's a PDF
+        const isPDF = filePath.toLowerCase().endsWith('.pdf');
+        
+        if (isPDF) {
+            // Open PDF in a new tab for better viewing experience
+            window.open(filePath, '_blank');
+            return;
+        }
+
+        // Handle image certificates with modal
+        let modal = document.getElementById('certificate-modal');
+        if (!modal) {
+            modal = this.createCertificateModal();
+        }
+
+        // Get certificate title from path
+        const fileName = filePath.split('/').pop();
+        const title = this.getCertificateTitle(fileName);
+        
+        // Update modal content
+        modal.querySelector('.certificate-title').textContent = title;
+        modal.querySelector('.certificate-image').src = filePath;
+        modal.querySelector('.certificate-image').alt = title;
+        
+        // Show modal
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    createCertificateModal() {
+        const modal = document.createElement('div');
+        modal.id = 'certificate-modal';
+        modal.className = 'certificate-modal';
+        modal.innerHTML = `
+            <div class="certificate-content">
+                <button class="certificate-close" onclick="portfolioApp.closeCertificateModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h3 class="certificate-title">Certificate</h3>
+                <img class="certificate-image" src="" alt="Certificate" />
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Close on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                this.closeCertificateModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                this.closeCertificateModal();
+            }
+        });
+        
+        return modal;
+    }
+
+    getCertificateTitle(fileName) {
+        const titles = {
+            'Dean\'s List Award (Level-3).jpg': 'Dean\'s List Award - Level 3',
+            '6. Team Matrix Certificate.jpg': 'Team Matrix Elite Hackers Certificate',
+            '3. Soft Skill (Core Employability).jpg': '21st Century Employability Skills Certificate',
+            '4. Creative IT Certificate.jpg': 'Creative IT Institute Certificate',
+            '7. OPSWAT CIP Certificate.png': 'OPSWAT CIP Certificate',
+            'CppBuzz.png': 'Python Programming Certificate',
+            'Ratul Internship Certificate.png': 'Professional Internship Certificate',
+            'RTV Oraganizing Team Member .png': 'RTV Organizing Team Member Certificate',
+            '2. AWS Crtificate.pdf': 'AWS Cloud Computing Certificate',
+            '5. Soft Skill Certificate.pdf': 'Wadhwani Foundation - 21st Century Employability Skills',
+            '1. CPP Buzz Certificate.pdf': 'CPP Buzz - Python Programming Certificate'
+        };
+        
+        return titles[fileName] || 'Certificate';
+    }
+
+    closeCertificateModal() {
+        const modal = document.getElementById('certificate-modal');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    showNotification(message, type = 'info') {
         const notification = document.createElement('div');
         notification.className = `notification notification-${type}`;
         notification.textContent = message;
@@ -1158,7 +1537,10 @@ window.portfolioUtils = {
             setTimeout(() => notification.remove(), 300);
         }, 3000);
     }
-};
+}
+
+// Initialize the enhanced portfolio app
+const portfolioApp = new PortfolioApp();
 
 // Console easter egg
 console.log(`
@@ -1171,20 +1553,24 @@ console.log(`
     ║       ██║   ██║ ╚═╝ ██║    ██║ ╚═╝ ██║███████╗██║  ██║██║  ██║║
     ║       ╚═╝   ╚═╝     ╚═╝    ╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝║
     ║                                                               ║
-    ║           Welcome to my portfolio! 🚀                        ║
+    ║           Welcome to my enhanced portfolio! 🚀               ║
     ║           Built with modern web technologies                  ║
     ║           Try the Konami code for a surprise! 🎮             ║
     ║                                                               ║
     ╚═══════════════════════════════════════════════════════════════╝
 `);
 
-console.log('🎯 Portfolio Features:');
+console.log('🎯 Enhanced Portfolio Features:');
 console.log('• 3D Background with Three.js');
+console.log('• Dark/Light Theme Toggle');
+console.log('• Interactive Blog Section');
+console.log('• Testimonials Carousel');
+console.log('• Project Live Demos');
 console.log('• Custom Cursor Effects');
 console.log('• Smooth Animations & Transitions');
 console.log('• Responsive Design');
 console.log('• Performance Optimized');
-console.log('• Easter Eggs Hidden! 🥚');
+console.log('• Easter Eggs Hidden! 🥚 (Try Konami Code!)');
 
-// Make portfolioApp globally accessible for debugging
+// Make portfolioApp globally accessible for functionality
 window.portfolioApp = portfolioApp;

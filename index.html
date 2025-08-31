@@ -47,6 +47,12 @@
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
     
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-sun sun-icon"></i>
+        <i class="fas fa-moon moon-icon"></i>
+    </button>
+    
     <!-- Scroll Indicator -->
     <div class="scroll-indicator"></div>
 
@@ -71,7 +77,9 @@
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="#achievements">Awards</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
                     <li class="nav-item"><a class="nav-link" href="#activities">Activities</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
@@ -277,7 +285,7 @@
                     <div class="timeline-content">
                         <div class="timeline-period">Jan 2020 - Jan 2025</div>
                         <h3>B.Sc. Engineering (IoT & Robotics)</h3>
-                        <h4>University of Frontier Technology, Bangladesh</h4>
+                        <h4>Gazipur Digital University, Bangladesh</h4>
                         <p>Graduated with CGPA 3.71/4.00 in IoT & Robotics Engineering. Specialized in intelligent systems, embedded programming, and automation technologies.</p>
                         <div class="timeline-tags">
                             <span class="tag">IoT Systems</span>
@@ -889,6 +897,7 @@
                     <div class="project-image">
                         <div class="project-overlay">
                             <div class="project-links">
+                                <a href="#" class="project-link demo-link" data-demo="fire-robot"><i class="fas fa-play"></i></a>
                                 <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
                                 <a href="https://github.com/TM-Mehrab-Hasan/Early-Stage-Fire-Detection-Robot" class="project-link"><i class="fab fa-github"></i></a>
                             </div>
@@ -1384,6 +1393,150 @@
         </div>
     </section>
 
+    <!-- Blog Section -->
+    <section id="blog" class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">INSIGHTS</span>
+                <h2 class="section-title">Technical Blog</h2>
+                <p class="section-subtitle">Sharing knowledge and insights about IoT, Robotics, and Modern Web Development</p>
+            </div>
+            
+            <div class="blog-grid">
+                <article class="blog-card featured" data-aos="fade-up" data-aos-delay="100">
+                    <div class="blog-image">
+                        <div class="blog-category">IoT</div>
+                        <div class="blog-date">Aug 30, 2025</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Building Scalable IoT Systems: Best Practices from Real Projects</h3>
+                        <p>Discover the essential patterns and practices I've learned while developing production-ready IoT systems, from sensor integration to cloud connectivity.</p>
+                        <div class="blog-tags">
+                            <span class="tag">IoT Architecture</span>
+                            <span class="tag">ESP32</span>
+                            <span class="tag">Cloud Integration</span>
+                        </div>
+                        <div class="blog-meta">
+                            <span class="read-time">8 min read</span>
+                            <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-image">
+                        <div class="blog-category">Web Dev</div>
+                        <div class="blog-date">Aug 25, 2025</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Modern Portfolio Design: Three.js Integration Tips</h3>
+                        <p>Learn how to create stunning 3D backgrounds for your portfolio using Three.js while maintaining optimal performance across devices.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Three.js</span>
+                            <span class="tag">WebGL</span>
+                            <span class="tag">Performance</span>
+                        </div>
+                        <div class="blog-meta">
+                            <span class="read-time">6 min read</span>
+                            <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="blog-image">
+                        <div class="blog-category">ML</div>
+                        <div class="blog-date">Aug 20, 2025</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Explainable AI in Investment Systems: Making Complex Models Transparent</h3>
+                        <p>Dive deep into implementing explainable AI techniques for financial recommendation systems, making ML decisions understandable to users.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Explainable AI</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Finance</span>
+                        </div>
+                        <div class="blog-meta">
+                            <span class="read-time">10 min read</span>
+                            <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="blog-image">
+                        <div class="blog-category">Robotics</div>
+                        <div class="blog-date">Aug 15, 2025</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Fire Detection Robot: From Concept to International Expo</h3>
+                        <p>The complete journey of developing an autonomous fire detection robot, including challenges faced and lessons learned during the development process.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Robotics</span>
+                            <span class="tag">Arduino</span>
+                            <span class="tag">Project Management</span>
+                        </div>
+                        <div class="blog-meta">
+                            <span class="read-time">12 min read</span>
+                            <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="blog-image">
+                        <div class="blog-category">Django</div>
+                        <div class="blog-date">Aug 10, 2025</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Django REST API Security: Advanced Authentication Patterns</h3>
+                        <p>Implementing robust authentication and authorization in Django REST APIs with JWT, OAuth2, and custom security middleware.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Django</span>
+                            <span class="tag">REST API</span>
+                            <span class="tag">Security</span>
+                        </div>
+                        <div class="blog-meta">
+                            <span class="read-time">9 min read</span>
+                            <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="blog-image">
+                        <div class="blog-category">Career</div>
+                        <div class="blog-date">Aug 5, 2025</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3>From Student to Industry: My Journey in IoT Engineering</h3>
+                        <p>Sharing my transition from university projects to working in the industry, including internships, skill development, and career insights.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Career</span>
+                            <span class="tag">IoT Industry</span>
+                            <span class="tag">Professional Growth</span>
+                        </div>
+                        <div class="blog-meta">
+                            <span class="read-time">7 min read</span>
+                            <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="blog-actions" data-aos="fade-up" data-aos-delay="700">
+                <a href="#" class="btn-primary">
+                    <span>View All Articles</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#" class="btn-secondary">
+                    <span>Subscribe to Blog</span>
+                    <i class="fas fa-rss"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Achievements Section -->
     <section id="achievements" class="section">
         <div class="container">
@@ -1394,31 +1547,202 @@
             </div>
             
             <div class="achievements-grid">
+                <!-- Latest First: July 2025 -->
                 <div class="achievement-card highlight" data-aos="fade-up" data-aos-delay="100">
                     <div class="achievement-icon">
-                        <i class="fas fa-medal"></i>
+                        <div class="certificate-thumbnail">
+                            <img src="certificates/Ratul Internship Certificate.png" alt="Internship Certificate" class="cert-preview">
+                            <div class="icon-overlay">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-date">July 2025</div>
+                        <h3>Professional Internship Certificate</h3>
+                        <p>Successful completion of professional internship program</p>
+                        <div class="achievement-issuer">Robo Tech Valley</div>
+                        <button class="view-certificate-btn" onclick="portfolioApp.viewCertificate('certificates/Ratul Internship Certificate.png')">
+                            <i class="fas fa-eye"></i> View Certificate
+                        </button>
+                    </div>
+                </div>
+
+                <!-- June 2025 - Dean's List -->
+                <div class="achievement-card highlight" data-aos="fade-up" data-aos-delay="200">
+                    <div class="achievement-icon">
+                        <div class="certificate-thumbnail">
+                            <img src="certificates/Dean's List Award (Level-3).jpg" alt="Dean's List Certificate" class="cert-preview">
+                            <div class="icon-overlay">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                        </div>
                     </div>
                     <div class="achievement-content">
                         <div class="achievement-date">June 2025</div>
                         <h3>Dean's Certificate & Dean's List</h3>
                         <p>Selected for Dean's List for two consecutive semesters with outstanding academic performance</p>
-                        <div class="achievement-issuer">University of Frontier Technology, Bangladesh</div>
+                        <div class="achievement-issuer">Gazipur Digital University, Bangladesh</div>
+                        <button class="view-certificate-btn" onclick="portfolioApp.viewCertificate('certificates/Dean\'s List Award (Level-3).jpg')">
+                            <i class="fas fa-eye"></i> View Certificate
+                        </button>
                     </div>
                 </div>
 
-                <div class="achievement-card" data-aos="fade-up" data-aos-delay="200">
+                <!-- June 2025 - RTV -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="achievement-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <div class="certificate-thumbnail">
+                            <img src="certificates/RTV Oraganizing Team Member .png" alt="RTV Certificate" class="cert-preview">
+                            <div class="icon-overlay">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-date">June 2025</div>
+                        <h3>RTV Organizing Team Member</h3>
+                        <p>Active participation as organizing committee member</p>
+                        <div class="achievement-issuer">5th International Robotic Olympiad Organizing Committee</div>
+                        <button class="view-certificate-btn" onclick="portfolioApp.viewCertificate('certificates/RTV Oraganizing Team Member .png')">
+                            <i class="fas fa-eye"></i> View Certificate
+                        </button>
+                    </div>
+                </div>
+
+                <!-- February 2025 - OPSWAT -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="achievement-icon">
+                        <div class="certificate-thumbnail">
+                            <img src="certificates/7. OPSWAT CIP Certificate.png" alt="OPSWAT Certificate" class="cert-preview">
+                            <div class="icon-overlay">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-date">February 2025</div>
+                        <h3>OPSWAT Critical Infrastructure Protection</h3>
+                        <p>Professional certification in critical infrastructure cybersecurity</p>
+                        <div class="achievement-issuer">OPSWAT</div>
+                        <button class="view-certificate-btn" onclick="portfolioApp.viewCertificate('certificates/7. OPSWAT CIP Certificate.png')">
+                            <i class="fas fa-eye"></i> View Certificate
+                        </button>
+                    </div>
+                </div>
+
+                <!-- March 2024 - Team Matrix -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="achievement-icon">
+                        <div class="certificate-thumbnail">
+                            <img src="certificates/6. Team Matrix Certificate.jpg" alt="Team Matrix Certificate" class="cert-preview">
+                            <div class="icon-overlay">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                        </div>
                     </div>
                     <div class="achievement-content">
                         <div class="achievement-date">March 2024</div>
                         <h3>Advanced Cybersecurity Program Certificate</h3>
                         <p>Completed comprehensive cybersecurity training program</p>
                         <div class="achievement-issuer">Team Matrix Elite Hackers</div>
+                        <button class="view-certificate-btn" onclick="portfolioApp.viewCertificate('certificates/6. Team Matrix Certificate.jpg')">
+                            <i class="fas fa-eye"></i> View Certificate
+                        </button>
                     </div>
                 </div>
 
-                <div class="achievement-card" data-aos="fade-up" data-aos-delay="300">
+                <!-- December 2023 - Wadhwani Foundation -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="achievement-icon">
+                        <div class="certificate-thumbnail pdf-certificate">
+                            <div class="pdf-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="icon-overlay">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-date">December 2023</div>
+                        <h3>21st Century Employability Skilling (Advanced)</h3>
+                        <p>Advanced certification in modern workplace skills and professional development</p>
+                        <div class="achievement-issuer">Wadhwani Foundation</div>
+                        <button class="view-certificate-btn" onclick="portfolioApp.viewCertificate('certificates/5. Soft Skill Certificate.pdf')">
+                            <i class="fas fa-eye"></i> View Certificate
+                        </button>
+                    </div>
+                </div>
+
+                <!-- October 2023 - Wadhwani Foundation -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="achievement-icon">
+                        <div class="certificate-thumbnail">
+                            <img src="certificates/3. Soft Skill (Core Employability).jpg" alt="Wadhwani Certificate" class="cert-preview">
+                            <div class="icon-overlay">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-date">October 2023</div>
+                        <h3>21st Century Employability Skilling Developer Program</h3>
+                        <p>Developer employying soft skill certification in modern workplace skills and professional development</p>
+                        <div class="achievement-issuer">Wadhwani Foundation</div>
+                        <button class="view-certificate-btn" onclick="portfolioApp.viewCertificate('certificates/3. Soft Skill (Core Employability).jpg')">
+                            <i class="fas fa-eye"></i> View Certificate
+                        </button>
+                    </div>
+                </div>
+
+                <!-- October 2023 - Creative IT -->
+                <!-- October 2023 - Creative IT -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="achievement-icon">
+                        <div class="certificate-thumbnail">
+                            <img src="certificates/4. Creative IT Certificate.jpg" alt="Creative IT Certificate" class="cert-preview">
+                            <div class="icon-overlay">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-date">October 2023</div>
+                        <h3>Cyber Security Training Certificate</h3>
+                        <p>Specialized training in cybersecurity practices</p>
+                        <div class="achievement-issuer">Creative IT Institute</div>
+                        <button class="view-certificate-btn" onclick="portfolioApp.viewCertificate('certificates/4. Creative IT Certificate.jpg')">
+                            <i class="fas fa-eye"></i> View Certificate
+                        </button>
+                    </div>
+                </div>
+
+                <!-- August 2023 - AWS -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="800">
+                    <div class="achievement-icon">
+                        <div class="certificate-thumbnail pdf-certificate">
+                            <div class="pdf-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="icon-overlay">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-date">August 2023</div>
+                        <h3>AWS Cloud Computing Certificate</h3>
+                        <p>Comprehensive cloud computing certification covering AWS fundamentals</p>
+                        <div class="achievement-issuer">AWS Academy</div>
+                        <button class="view-certificate-btn" onclick="portfolioApp.viewCertificate('certificates/2. AWS Crtificate.pdf')">
+                            <i class="fas fa-eye"></i> View Certificate
+                        </button>
+                    </div>
+                </div>
+
+                <!-- May 2023 - Science Fair -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="900">
                     <div class="achievement-icon">
                         <i class="fas fa-trophy"></i>
                     </div>
@@ -1430,41 +1754,156 @@
                     </div>
                 </div>
 
-                <div class="achievement-card" data-aos="fade-up" data-aos-delay="400">
+                <!-- January 2022 - CPP Buzz (Updated to use PDF) -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="1000">
                     <div class="achievement-icon">
-                        <i class="fas fa-user-graduate"></i>
+                        <div class="certificate-thumbnail pdf-certificate">
+                            <div class="pdf-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="icon-overlay">
+                                <i class="fas fa-code"></i>
+                            </div>
+                        </div>
                     </div>
                     <div class="achievement-content">
-                        <div class="achievement-date">December 2023</div>
-                        <h3>21st Century Employability Skilling (Advanced)</h3>
-                        <p>Advanced certification in modern workplace skills</p>
-                        <div class="achievement-issuer">Wadhwani Foundation</div>
+                        <div class="achievement-date">January 2022</div>
+                        <h3>Python Programming Certificate</h3>
+                        <p>Comprehensive Python programming skills certification from basic to advanced levels</p>
+                        <div class="achievement-issuer">CPP Buzz</div>
+                        <button class="view-certificate-btn" onclick="portfolioApp.viewCertificate('certificates/1. CPP Buzz Certificate.pdf')">
+                            <i class="fas fa-eye"></i> View Certificate
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section section-dark">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">TESTIMONIALS</span>
+                <h2 class="section-title">What People Say</h2>
+                <p class="section-subtitle">Feedback from colleagues, mentors, and collaborators</p>
+            </div>
+            
+            <div class="testimonials-carousel" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-card active" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"Mehrab's work on IoT systems is exceptional. His ability to integrate complex sensors with cloud platforms while maintaining system reliability is remarkable. A true professional in every aspect."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Ahsanul Akib</h4>
+                                <span>Managing Director, Robo Tech Valley</span>
+                                <div class="author-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="achievement-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="achievement-icon">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <div class="achievement-date">August 2023</div>
-                        <h3>Introduction to Cloud Certificate</h3>
-                        <p>Foundational cloud computing certification</p>
-                        <div class="achievement-issuer">AWS Academy</div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"Working with Mehrab on web development projects has been a pleasure. His attention to detail and innovative approach to solving complex problems sets him apart from his peers."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Professor Dr. Mohammad Abu Yousuf</h4>
+                                <span>Vice Chancellor, GDU</span>
+                                <div class="author-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="achievement-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="achievement-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <div class="achievement-date">October 2023</div>
-                        <h3>Cyber Security Training Certificate</h3>
-                        <p>Specialized training in cybersecurity practices</p>
-                        <div class="achievement-issuer">Creative IT Institute</div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"Mehrab's expertise in Django and Python development helped our team deliver high-quality solutions. His code is clean, well-documented, and follows best practices consistently."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user-cog"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Lead Development Team</h4>
+                                <span>Perpex</span>
+                                <div class="author-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"His leadership skills in our robotics club were outstanding. Mehrab organized events efficiently and always ensured every team member was engaged and motivated."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>MD Mahedy Hasan Bappy</h4>
+                                <span>President, GDU Robotics Club</span>
+                                <div class="author-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-navigation" data-aos="fade-up" data-aos-delay="500">
+                <button class="nav-btn prev-btn" onclick="portfolioApp.previousTestimonial()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="nav-dots">
+                    <span class="dot active" onclick="portfolioApp.currentTestimonial(0)"></span>
+                    <span class="dot" onclick="portfolioApp.currentTestimonial(1)"></span>
+                    <span class="dot" onclick="portfolioApp.currentTestimonial(2)"></span>
+                    <span class="dot" onclick="portfolioApp.currentTestimonial(3)"></span>
+                </div>
+                <button class="nav-btn next-btn" onclick="portfolioApp.nextTestimonial()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -1486,7 +1925,7 @@
                     <div class="activity-content">
                         <div class="activity-period">May 2023 - Dec 2024</div>
                         <h3>Deputy Organizing Secretary</h3>
-                        <h4>UFTB Robotics Club</h4>
+                        <h4>GDU Robotics Club</h4>
                         <p>Assisted in planning and coordinating robotics events and workshops, while managing team logistics for smooth execution of technical programs.</p>
                         <div class="activity-achievements">
                             <span>Event Management</span>
@@ -1503,7 +1942,7 @@
                     <div class="activity-content">
                         <div class="activity-period">March 2023 - May 2024</div>
                         <h3>Executive Secretary</h3>
-                        <h4>UFTB Programming Club</h4>
+                        <h4>GDU Programming Club</h4>
                         <p>Led coding competitions and coordinated with team members to organize regular coding sessions and webinars for skill development.</p>
                         <div class="activity-achievements">
                             <span>Competition Management</span>
@@ -1520,7 +1959,7 @@
                     <div class="activity-content">
                         <div class="activity-period">Jan 2023 - Dec 2024</div>
                         <h3>Program Secretary</h3>
-                        <h4>UFTB Cultural Club</h4>
+                        <h4>GDU Cultural Club</h4>
                         <p>Organized and managed cultural events, facilitating collaboration between student groups for successful execution of university programs.</p>
                         <div class="activity-achievements">
                             <span>Event Organization</span>
@@ -1537,7 +1976,7 @@
                     <div class="activity-content">
                         <div class="activity-period">July 2023 - Dec 2024</div>
                         <h3>Korean Language Secretary</h3>
-                        <h4>UFTB Language Club</h4>
+                        <h4>GDU Language Club</h4>
                         <p>Managed communication and coordinated activities between club members and external partners, organizing Korean language learning sessions.</p>
                         <div class="activity-achievements">
                             <span>Language Education</span>
@@ -1721,9 +2160,19 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop">
+    <button class="back-to-top pulse" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </button>
+
+    <!-- Live Demo Modal -->
+    <div id="demo-modal" class="demo-modal">
+        <div class="demo-content">
+            <button class="demo-close" onclick="portfolioApp.closeDemoModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="demo-video"></div>
+        </div>
+    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
