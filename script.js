@@ -1129,9 +1129,21 @@ class PortfolioApp {
         const themeToggle = document.getElementById('themeToggle');
         if (!themeToggle) return;
 
-        // Load saved theme or default to dark
-        const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // Use saved preference, otherwise follow system theme
+        const savedTheme = localStorage.getItem('portfolio-theme');
+        const initialTheme = savedTheme || (systemPrefersDark.matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', initialTheme);
+
+        // Listen for system theme changes (only applies if user hasn't manually set a preference)
+        systemPrefersDark.addEventListener('change', (e) => {
+            if (!localStorage.getItem('portfolio-theme')) {
+                const systemTheme = e.matches ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', systemTheme);
+                this.updateThreeJSColors(systemTheme);
+            }
+        });
 
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
