@@ -391,10 +391,11 @@ class PortfolioApp {
         
         const text = typewriterElement.textContent;
         const roles = [
-            'IoT Engineer',
-            'Robotics Engineer', 
-            'Web Developer',
-            'AI Enthusiast',
+            'IoT & Robotics Engineer',
+            'Software Developer',
+            'AI/ML Enthusiast', 
+            'Django Backend Developer',
+            'Embedded Systems Engineer',
             'Tech Innovator'
         ];
         
