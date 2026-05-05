@@ -1,5 +1,5 @@
 /**
- * AI Research Assistant Chatbot logic with Gemini 2.5 Flash Lite API
+ * AI Research Assistant Chatbot logic with Google Gemini API
  */
 export class AIChatbot {
     constructor(app) {
@@ -10,22 +10,22 @@ export class AIChatbot {
         this.sendBtn = document.getElementById('sendChat');
         this.toggleBtn = document.getElementById('chatToggle');
         
-        // Gemini API Configuration
-        this.geminiApiKey = 'AIzaSyCf9MufZJ9uYz7rVG3Cb0rSZsmTmeAFrW4';
-        this.geminiModel = 'gemini-2.5-flash-lite';
-        this.geminiApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${this.geminiModel}:generateContent`;
+        // Google Gemini API Configuration
+        this.apiKey = 'AIzaSyCf9MufZJ9uYz7rVG3Cb0rSZsmTmeAFrW4';
+        this.model = 'gemini-pro';
+        this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
         
         if (!this.hud || !this.input) return;
         
         // Fallback knowledge base for when API fails
         this.knowledgeBase = [
-            { keywords: ['project', 'work', 'build'], response: "40+ projects including BITSS VWAR (Security), BAAZAR X (AI E-commerce), and Fire Detection Robot." },
-            { keywords: ['publication', 'research', 'paper', 'ieee'], response: "7+ publications. Recent: 2 papers in IEEE COMPAS 2025 on Healthcare IoT and Water Quality Monitoring." },
-            { keywords: ['iot', 'robot', 'esp32', 'arduino'], response: "IoT specialist: ESP32, Arduino, embedded systems expert." },
-            { keywords: ['skill', 'language', 'stack', 'tech'], response: "Stack: Python (Django/Flask), C++, JavaScript (React), ML (Scikit-learn/TensorFlow)." },
+            { keywords: ['project', 'work', 'build'], response: "40+ projects. Key: BITSS VWAR (security), BAAZAR X (AI ecommerce), Fire Detection Robot." },
+            { keywords: ['publication', 'research', 'paper', 'ieee'], response: "7+ publications including 2 IEEE COMPAS 2025 papers on Healthcare IoT and Water Quality." },
+            { keywords: ['iot', 'robot', 'esp32', 'arduino'], response: "IoT expert: ESP32, Arduino, embedded systems, sensors, cloud integration." },
+            { keywords: ['skill', 'language', 'stack', 'tech'], response: "Python (Django/Flask), C++, JavaScript (React), TensorFlow, scikit-learn." },
             { keywords: ['contact', 'email', 'phone', 'hire'], response: "Email: mehrabratul210524@gmail.com | Phone: +880 1568-901285" },
-            { keywords: ['education', 'university', 'degree'], response: "B.Sc. in IoT & Robotics Engineering, University of Frontier Technology, CGPA: 3.71" },
-            { keywords: ['experience', 'job', 'bfin', 'perpex'], response: "Jr. Software Developer at BFIN IT. Previous: internships at PERPEX (India) and Robo Tech Valley." }
+            { keywords: ['education', 'university', 'degree'], response: "B.Sc. IoT & Robotics from University of Frontier Technology (CGPA: 3.71)." },
+            { keywords: ['experience', 'job', 'bfin', 'perpex'], response: "Jr. Dev at BFIN IT. Interned at PERPEX (India) and Robo Tech Valley." }
         ];
 
         this.init();
@@ -70,68 +70,55 @@ export class AIChatbot {
     }
 
     async getGeminiResponse(userMessage) {
-        const systemPrompt = `You are Mehrab's AI assistant on his portfolio website. Your role is to answer questions about:
-- His projects and work experience
-- His technical skills and expertise in IoT, Robotics, and Web Development
-- His research and publications
-- His background and education
-- How to contact him
+        const systemPrompt = `You are Mehrab's AI assistant. Answer ONLY about him and his portfolio in 1-2 short sentences. Be concise and direct.
+Mehrab: IoT & Robotics Engineer, 40+ projects, 7+ publications, Python/Django/C++/IoT expert.
+Email: mehrabratul210524@gmail.com | Phone: +880 1568-901285`;
 
-IMPORTANT: Keep responses SHORT, CONCISE and ACCURATE. Maximum 2-3 sentences. Focus on key information only. 
-Answer only about Mehrab Hasan and his portfolio. For unrelated questions, politely redirect.
-
-Context about Mehrab:
-- IoT & Robotics Engineer with 40+ projects
-- 7+ research publications in IEEE COMPAS 2025
-- Skills: Python, Django, C++, JavaScript, ESP32, Arduino, Machine Learning
-- Education: B.Sc. in IoT & Robotics Engineering (CGPA: 3.71)
-- Current: Jr. Software Developer at BFIN IT
-- Contact: mehrabratul210524@gmail.com | +880 1568-901285`;
-
-        const payload = {
-            contents: [{
-                parts: [{
-                    text: `${systemPrompt}\n\nUser Question: ${userMessage}`
-                }]
-            }],
-            generationConfig: {
-                maxOutputTokens: 100,
-                temperature: 0.7,
-                topP: 0.9,
-                topK: 40
-            },
-            safetySettings: [
-                {
-                    category: "HARM_CATEGORY_HARASSMENT",
-                    threshold: "BLOCK_MEDIUM_AND_ABOVE"
+        try {
+            const payload = {
+                contents: [{
+                    role: "user",
+                    parts: [{
+                        text: `${systemPrompt}\n\nQuestion: ${userMessage}`
+                    }]
+                }],
+                generationConfig: {
+                    maxOutputTokens: 60,
+                    temperature: 0.5,
+                    topP: 0.8
                 },
-                {
-                    category: "HARM_CATEGORY_HATE_SPEECH",
-                    threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                safetySettings: [
+                    { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                    { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" }
+                ]
+            };
+
+            const response = await fetch(`${this.apiUrl}?key=${this.apiKey}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+
+            const data = await response.json();
+            
+            if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
+                let text = data.candidates[0].content.parts[0].text.trim();
+                // Enforce 2-sentence max by truncating at second period if needed
+                const sentences = text.split(/[.!?]+/).filter(s => s.trim());
+                if (sentences.length > 2) {
+                    text = sentences.slice(0, 2).join('. ') + '.';
                 }
-            ]
-        };
-
-        const response = await fetch(`${this.geminiApiUrl}?key=${this.geminiApiKey}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(payload)
-        });
-
-        if (!response.ok) {
-            throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                return text;
+            }
+            throw new Error('Invalid API response');
+        } catch (error) {
+            console.error('Gemini API error:', error);
+            throw error;
         }
-
-        const data = await response.json();
-        
-        if (data.candidates && data.candidates[0] && data.candidates[0].content) {
-            const aiResponse = data.candidates[0].content.parts[0].text;
-            return aiResponse.trim();
-        }
-
-        throw new Error('No response from Gemini API');
     }
 
     addMessage(text, type, isTyping = false) {
