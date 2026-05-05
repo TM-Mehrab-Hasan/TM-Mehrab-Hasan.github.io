@@ -119,7 +119,12 @@ PROJECTS (40+): BITSS VWAR, BAAZAR X, Fire Detection Robot, IoT systems
 PUBLICATIONS (7+): 2 IEEE COMPAS 2025 papers (Healthcare IoT, Water Quality)
 SKILLS: Python/Django, C++, React, TensorFlow, ESP32/Arduino, ML, Cloud
 
-Keep answers 1-2 sentences. Be professional and helpful.`;
+RESPONSE GUIDELINES:
+- Keep answers 1-2 sentences.
+- Be professional and helpful.
+- Suggest Terminal HUD commands where relevant.
+- Example: "You can see my full skill tree by typing 'skills' in the Terminal."
+- Available Terminal commands: help, clear, about, skills, projects, contact, system, github, cv, theme [light/dark], whoami, date, ai.`;
 
         const payload = {
             contents: [{

@@ -23,7 +23,22 @@ export class TerminalHUD {
             'cv': () => { window.open('Curriculum Vitae [T. M. Mehrab Hasan].pdf', '_blank'); return "Downloading CV..."; },
             'theme': (args) => this.setTheme(args),
             'whoami': () => "Guest_User@SS_TIER_OS",
-            'date': () => new Date().toString()
+            'date': () => new Date().toString(),
+            'ai': (args) => {
+                if (!args || args.length === 0) return "Usage: ai [message] - Ask Mehrab's AI assistant a question.";
+                const question = args.join(' ');
+                if (window.portfolioApp && window.portfolioApp.aiChatbot) {
+                    // Open the chatbot if it's minimized
+                    if (window.portfolioApp.aiChatbot.hud.classList.contains('minimized')) {
+                        window.portfolioApp.aiChatbot.hud.classList.remove('minimized');
+                    }
+                    // Handle the message
+                    window.portfolioApp.aiChatbot.input.value = question;
+                    window.portfolioApp.aiChatbot.handleMessage();
+                    return `Forwarding prompt to MEHRAB_AI: "${question}"...`;
+                }
+                return "Error: MEHRAB_AI system not initialized.";
+            }
         };
 
         this.init();
