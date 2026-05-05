@@ -4,7 +4,6 @@
 import { ThemeManager } from './theme.js';
 import { AnimationManager } from './animations.js';
 import { ThreeScene } from './three-scene.js';
-import { TerminalHUD } from './terminal.js';
 import { StatusHUD } from './status-hud.js';
 import { AIChatbot } from './ai-chatbot.js';
 import * as utils from './utils.js';
@@ -34,12 +33,6 @@ class PortfolioApp {
         } catch (e) {
             console.error('AnimationManager init error:', e);
             this.animationManager = null;
-        }
-        
-        try {
-            this.terminalHUD = new TerminalHUD(this);
-        } catch (e) {
-            console.error('TerminalHUD init error:', e);
         }
         
         try {

@@ -22,51 +22,48 @@ export class AIChatbot {
         this.responsePatterns = [
             {
                 patterns: ['reliable', 'trustworthy', 'trust', 'honest', 'dependable', 'integrity'],
-                response: `Yes! Mehrab has proven reliability: 40+ successful projects, 7+ peer-reviewed publications, CGPA 3.71, and strong testimonials from colleagues. His code follows best practices and is well-documented.` 
+                response: `Mehrab has proven reliability through:
+- 40+ successful projects
+- 7+ peer-reviewed publications
+- CGPA 3.71 in IoT & Robotics
+- Strong professional testimonials` 
             },
             {
                 patterns: ['project', 'work', 'build', 'developed', 'portfolio', 'what did'],
-                response: `40+ completed projects: BITSS VWAR (Security Software), BAAZAR X (AI E-commerce), Fire Detection Robot, IoT environmental systems. See Projects section for full portfolio and case studies.`
+                response: `He has completed 40+ projects including:
+- BITSS VWAR (Security Software)
+- BAAZAR X (AI E-commerce)
+- Fire Detection Robot
+- IoT Environmental Systems`
             },
             {
                 patterns: ['skill', 'language', 'tech', 'stack', 'programming', 'proficient', 'expertise'],
-                response: `Python (Django/Flask), C++, JavaScript (React), TensorFlow, Scikit-learn, ESP32, Arduino, MQTT, LoRaWAN, PostgreSQL, MongoDB, Git, Docker, REST APIs.`
+                response: `Technical Expertise:
+- Backend: Python (Django/Flask), PostgreSQL, MongoDB
+- Languages: C++, JavaScript (React)
+- AI/ML: TensorFlow, Scikit-learn
+- Hardware: ESP32, Arduino, LoRaWAN`
             },
             {
                 patterns: ['publication', 'research', 'paper', 'ieee', 'write', 'published', 'conference'],
-                response: `7+ research publications including 2 papers in IEEE COMPAS 2025: Healthcare IoT Systems and Water Quality Monitoring. Strong research and technical writing abilities.`
+                response: `Research Highlights:
+- 7+ research publications
+- 2 papers in IEEE COMPAS 2025
+- Focus: Healthcare IoT & Water Quality`
             },
             {
                 patterns: ['contact', 'email', 'phone', 'reach', 'connect', 'hire', 'collaborate', 'message'],
-                response: `Email: mehrabratul210524@gmail.com | Phone: +880 1568-901285 | Dhaka, Bangladesh. Available for projects, collaborations, and opportunities!`
-            },
-            {
-                patterns: ['education', 'university', 'degree', 'study', 'background', 'college', 'graduat'],
-                response: `B.Sc. in IoT & Robotics Engineering from University of Frontier Technology (CGPA 3.71). Strong foundation in embedded systems, robotics, and software engineering.`
+                response: `Contact Details:
+- Email: mehrabratul210524@gmail.com
+- Phone: +880 1568-901285
+- Location: Dhaka, Bangladesh`
             },
             {
                 patterns: ['experience', 'job', 'work', 'employed', 'career', 'internship', 'bfin', 'perpex'],
-                response: `Jr. Software Developer at BFIN IT (current). Internships: PERPEX (India), Robo Tech Valley. 2+ years in IoT, robotics, and full-stack development.`
-            },
-            {
-                patterns: ['iot', 'robot', 'esp32', 'arduino', 'embedded', 'sensor', 'microcontroller'],
-                response: `IoT & Robotics expert: ESP32, Arduino, embedded systems design, sensor integration, MQTT/LoRaWAN protocols. Developed multiple real-time IoT solutions.`
-            },
-            {
-                patterns: ['django', 'python', 'backend', 'web', 'rest', 'api', 'server', 'database'],
-                response: `Django & Python backend specialist: REST APIs, database design (PostgreSQL/MongoDB), full-stack solutions. BAAZAR X is a notable Django/React project.`
-            },
-            {
-                patterns: ['machine learning', 'ai', 'neural', 'tensorflow', 'scikit', 'algorithm'],
-                response: `ML experience: TensorFlow, Scikit-learn, neural networks, data preprocessing. Integrates ML into IoT systems for intelligent edge computing.`
-            },
-            {
-                patterns: ['available', 'freelance', 'contract', 'open', 'opportunity', 'looking', 'hire me'],
-                response: `Available for freelance projects, contract work, and full-time roles. Contact: mehrabratul210524@gmail.com to discuss opportunities!`
-            },
-            {
-                patterns: ['react', 'javascript', 'frontend', 'ui', 'ux', 'client', 'browser'],
-                response: `React & JavaScript frontend development. Responsive UI/UX design, modern web standards. Combines React frontend with Python/Django backend for full-stack apps.`
+                response: `Professional Journey:
+- Jr. Software Developer: BFIN IT (Current)
+- Intern: PERPEX (India) & Robo Tech Valley
+- 2+ years in IoT & Full-stack dev`
             }
         ];
 
@@ -107,35 +104,38 @@ export class AIChatbot {
     }
 
     async getGeminiResponse(userMessage) {
-        const systemPrompt = `You are Mehrab Hasan's AI assistant. Answer questions about his portfolio accurately and professionally.
+        const systemPrompt = `You are MEHRAB_AI, the personal assistant for Mehrab Hasan. 
+Your goal is to provide concise, smart, and professional information about his career.
 
-MEHRAB'S PROFILE:
-- IoT & Robotics Engineer | Jr. Software Developer at BFIN IT
-- Education: B.Sc. IoT & Robotics, University of Frontier Technology (CGPA 3.71)
-- Location: Dhaka, Bangladesh
-- Contact: mehrabratul210524@gmail.com | +880 1568-901285
+MEHRAB'S DATA:
+- Role: IoT & Robotics Engineer | Jr. Software Developer at BFIN IT.
+- Expertise: Python/Django, C++, React, TensorFlow, ESP32, ML, Cloud.
+- Education: B.Sc. IoT & Robotics (CGPA 3.71).
+- Key Projects: BITSS VWAR, BAAZAR X, AI-driven Robotics.
+- Publications: 7+ research papers (IEEE).
 
-PROJECTS (40+): BITSS VWAR, BAAZAR X, Fire Detection Robot, IoT systems
-PUBLICATIONS (7+): 2 IEEE COMPAS 2025 papers (Healthcare IoT, Water Quality)
-SKILLS: Python/Django, C++, React, TensorFlow, ESP32/Arduino, ML, Cloud
+INTELLIGENCE GUIDELINES:
+1. FORMATTING: Use bullet points (starting with '-') for lists to avoid "crowded" text.
+2. STYLE: Be extremely concise. Use 1-3 lines max unless a list is needed.
+3. SMARTNESS: Do not repeat yourself. Answer the specific question asked using the data above.
+4. TONE: Professional, technical, and efficient.
 
-RESPONSE GUIDELINES:
-- Keep answers 1-2 sentences.
-- Be professional and helpful.
-- Suggest Terminal HUD commands where relevant.
-- Example: "You can see my full skill tree by typing 'skills' in the Terminal."
-- Available Terminal commands: help, clear, about, skills, projects, contact, system, github, cv, theme [light/dark], whoami, date, ai.`;
+Example format:
+Here is my experience with IoT:
+- Developed 10+ real-time IoT solutions using ESP32 and Arduino.
+- Implemented LoRaWAN protocols for environmental monitoring.
+- Specialized in sensor integration and edge computing.`;
 
         const payload = {
             contents: [{
                 role: "user",
                 parts: [{
-                    text: `${systemPrompt}\n\nQuestion: ${userMessage}`
+                    text: `${systemPrompt}\n\nUser Question: ${userMessage}`
                 }]
             }],
             generationConfig: {
-                maxOutputTokens: 150,
-                temperature: 0.7,
+                maxOutputTokens: 250,
+                temperature: 0.6,
                 topP: 0.9
             }
         };
@@ -149,9 +149,7 @@ RESPONSE GUIDELINES:
             body: JSON.stringify(payload)
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
         const data = await response.json();
         if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
@@ -166,14 +164,42 @@ RESPONSE GUIDELINES:
                 return pattern.response;
             }
         }
-        return "Ask about Mehrab's projects, skills (Python, Django, IoT, C++, React), experience, education, publications, or contact!";
+        return "I can provide details about Mehrab's projects, skills, research, and contact information. What would you like to know?";
     }
 
     addMessage(text, type, isTyping = false) {
         const msg = document.createElement('div');
         msg.className = `message ${type}`;
-        if (isTyping) msg.classList.add('typing-indicator');
-        msg.textContent = text;
+        if (isTyping) {
+            msg.classList.add('typing-indicator');
+            msg.textContent = text;
+        } else {
+            // Process markdown-like lists
+            const lines = text.split('\n');
+            let html = '';
+            let inList = false;
+
+            lines.forEach(line => {
+                const trimmed = line.trim();
+                if (trimmed.startsWith('-') || trimmed.startsWith('*')) {
+                    if (!inList) {
+                        html += '<ul>';
+                        inList = true;
+                    }
+                    html += `<li>${trimmed.substring(1).trim()}</li>`;
+                } else {
+                    if (inList) {
+                        html += '</ul>';
+                        inList = false;
+                    }
+                    if (trimmed) html += `<p>${trimmed}</p>`;
+                }
+            });
+
+            if (inList) html += '</ul>';
+            msg.innerHTML = html || `<p>${text}</p>`;
+        }
+
         this.messages.appendChild(msg);
         this.messages.scrollTop = this.messages.scrollHeight;
     }
