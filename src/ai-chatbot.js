@@ -1,5 +1,5 @@
 /**
- * AI Chatbot with Gemini 2.5 Flash Lite - Real-time + Intelligent Fallback
+ * AI Chatbot with Gemini 1.5 Flash - Real-time + Intelligent Fallback
  * Header-based API authentication with portfolio context knowledge
  */
 export class AIChatbot {
@@ -10,19 +10,19 @@ export class AIChatbot {
         this.input = document.getElementById('chatInput');
         this.sendBtn = document.getElementById('sendChat');
         this.toggleBtn = document.getElementById('chatToggle');
-        
-        // Gemini API Configuration
+
+        // Gemini API Configuration (Model updated to 1.5 Flash)
         this.apiKey = 'AIzaSyCf9MufZJ9uYz7rVG3Cb0rSZsmTmeAFrW4';
-        this.model = 'gemini-2.5-flash-lite';
+        this.model = 'gemini-1.5-flash';
         this.apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${this.model}:generateContent`;
-        
+
         if (!this.hud || !this.input) return;
-        
+
         // Intelligent response patterns with portfolio knowledge
         this.responsePatterns = [
-            { 
+            {
                 patterns: ['reliable', 'trustworthy', 'trust', 'honest', 'dependable', 'integrity'],
-                response: `Yes! Mehrab has proven reliability: 40+ successful projects, 7+ peer-reviewed publications, CGPA 3.71, and strong testimonials from colleagues. His code follows best practices and is well-documented.`
+                response: `Yes! Mehrab has proven reliability: 40+ successful projects, 7+ peer-reviewed publications, CGPA 3.71, and strong testimonials from colleagues. His code follows best practices and is well-documented.` 
             },
             {
                 patterns: ['project', 'work', 'build', 'developed', 'portfolio', 'what did'],
@@ -98,7 +98,9 @@ export class AIChatbot {
             this.addMessage(response, 'ai');
         } catch (error) {
             console.error('API Error - Using Fallback:', error);
-            this.messages.removeChild(this.messages.lastChild);
+            if (this.messages.lastChild && this.messages.lastChild.classList.contains('typing-indicator')) {
+                this.messages.removeChild(this.messages.lastChild);
+            }
             const response = this.getResponse(text.toLowerCase());
             this.addMessage(response, 'ai');
         }
@@ -171,4 +173,3 @@ Keep answers 1-2 sentences. Be professional and helpful.`;
         this.messages.scrollTop = this.messages.scrollHeight;
     }
 }
-    
