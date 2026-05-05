@@ -67,7 +67,7 @@ export class AnimationManager {
         );
 
         // 3D Scene Rotation Tie
-        if (this.app.threeScene) {
+        if (this.app.threeScene && this.app.threeScene.points) {
             gsap.to(this.app.threeScene.points.rotation, {
                 scrollTrigger: {
                     trigger: 'body',
