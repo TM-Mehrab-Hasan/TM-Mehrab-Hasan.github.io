@@ -579,7 +579,10 @@ class PortfolioApp {
 
 // Initialize App
 window.addEventListener('DOMContentLoaded', () => {
-    window.portfolioApp = new PortfolioApp();
+    // Create the instance first
+    const app = new PortfolioApp();
+    // Expose it globally so HTML onclicks work
+    window.portfolioApp = app;
 });
 
 console.log('%c INITIALIZING SS-TIER SYSTEM ', 'background: #0077b6; color: #fff; font-weight: bold; padding: 5px; border-radius: 3px;');
