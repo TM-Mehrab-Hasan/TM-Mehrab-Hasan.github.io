@@ -67,7 +67,7 @@ export class TerminalHUD {
             const result = this.commands[cmd](args);
             if (result) this.addLine(result);
         } else {
-            this.addLine(\`Command not found: \${cmd}. Type 'help' for assistance.\`, 'error');
+            this.addLine(`Command not found: ${cmd}. Type 'help' for assistance.`, 'error');
         }
 
         // Scroll to bottom
@@ -77,7 +77,7 @@ export class TerminalHUD {
 
     addLine(text, type = '') {
         const line = document.createElement('div');
-        line.className = \`terminal-line \${type}\`;
+        line.className = `terminal-line ${type}`;
         line.textContent = text;
         this.output.appendChild(line);
 
@@ -97,13 +97,13 @@ export class TerminalHUD {
     }
 
     getSystemInfo() {
-        return \`OS: SS-TIER v1.1.0 | Engine: GSAP/Three.js | Status: OPTIMIZED | Resolution: \${window.innerWidth}x\${window.innerHeight}\`;
+        return `OS: SS-TIER v1.1.0 | Engine: GSAP/Three.js | Status: OPTIMIZED | Resolution: ${window.innerWidth}x${window.innerHeight}`;
     }
 
     setTheme(args) {
         if (args[0] === 'light' || args[0] === 'dark') {
             this.app.themeManager.setTheme(args[0]);
-            return \`Theme set to \${args[0]}\`;
+            return `Theme set to ${args[0]}`;
         }
         return "Usage: theme [light/dark]";
     }

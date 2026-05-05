@@ -18,7 +18,7 @@ export class StatusHUD {
         // Random "Core Temp" fluctuation
         setInterval(() => {
             const temp = 30 + Math.random() * 5;
-            if (this.tempEl) this.tempEl.textContent = \`\${temp.toFixed(1)}°C\`;
+            if (this.tempEl) this.tempEl.textContent = `${temp.toFixed(1)}°C`;
         }, 5000);
     }
 
@@ -41,6 +41,6 @@ export class StatusHUD {
     updateScroll(progress) {
         if (!this.scrollEl) return;
         const percent = Math.round(progress * 100);
-        this.scrollEl.textContent = \`\${percent}%\`;
+        this.scrollEl.textContent = `${percent}%`;
     }
 }

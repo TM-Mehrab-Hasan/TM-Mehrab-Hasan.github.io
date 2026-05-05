@@ -54,7 +54,7 @@ export class AIChatbot {
 
     addMessage(text, type) {
         const msg = document.createElement('div');
-        msg.className = \`message \${type}\`;
+        msg.className = `message ${type}`;
         msg.textContent = text;
         this.messages.appendChild(msg);
         this.messages.scrollTop = this.messages.scrollHeight;
