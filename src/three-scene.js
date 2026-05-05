@@ -7,6 +7,20 @@ export class ThreeScene {
         this.app = app;
         this.container = document.getElementById(containerId);
         this.isMobile = window.innerWidth <= 768;
+        
+        // Check early before using THREE
+        if (!this.container || this.isMobile || typeof THREE === 'undefined') {
+            this.scene = null;
+            this.camera = null;
+            this.renderer = null;
+            this.points = null;
+            this.lines = null;
+            this.nodes = [];
+            this.raycaster = null;
+            this.mouse = null;
+            return;
+        }
+        
         this.scene = null;
         this.camera = null;
         this.renderer = null;
@@ -15,10 +29,6 @@ export class ThreeScene {
         this.nodes = [];
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
-        
-        if (!this.container || this.isMobile || typeof THREE === 'undefined') {
-            return;
-        }
 
         this.init();
     }

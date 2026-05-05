@@ -16,12 +16,43 @@ class PortfolioApp {
         this.isMobile = window.innerWidth <= 768;
         this.scrollProgress = 0;
         
-        this.themeManager = new ThemeManager();
-        this.threeScene = new ThreeScene('three-container', this);
-        this.animationManager = new AnimationManager(this);
-        this.terminalHUD = new TerminalHUD(this);
-        this.statusHUD = new StatusHUD(this);
-        this.aiChatbot = new AIChatbot(this);
+        try {
+            this.themeManager = new ThemeManager();
+        } catch (e) {
+            console.error('ThemeManager init error:', e);
+        }
+        
+        try {
+            this.threeScene = new ThreeScene('three-container', this);
+        } catch (e) {
+            console.error('ThreeScene init error:', e);
+            this.threeScene = null;
+        }
+        
+        try {
+            this.animationManager = new AnimationManager(this);
+        } catch (e) {
+            console.error('AnimationManager init error:', e);
+            this.animationManager = null;
+        }
+        
+        try {
+            this.terminalHUD = new TerminalHUD(this);
+        } catch (e) {
+            console.error('TerminalHUD init error:', e);
+        }
+        
+        try {
+            this.statusHUD = new StatusHUD(this);
+        } catch (e) {
+            console.error('StatusHUD init error:', e);
+        }
+        
+        try {
+            this.aiChatbot = new AIChatbot(this);
+        } catch (e) {
+            console.error('AIChatbot init error:', e);
+        }
         
         this.init();
     }
@@ -158,7 +189,9 @@ class PortfolioApp {
                 duration: 1,
                 ease: 'power4.inOut',
                 onComplete: () => {
-                    this.animationManager.init();
+                    if (this.animationManager) {
+                        this.animationManager.init();
+                    }
                 }
             });
         }
