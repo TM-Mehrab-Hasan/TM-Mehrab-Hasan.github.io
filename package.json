@@ -1,0 +1,25 @@
+{
+  "name": "tm-mehrab-hasan.github.io-main",
+  "version": "1.0.0",
+  "description": "A modern, interactive, and responsive portfolio website showcasing my expertise in **IoT & Robotics Engineering**, **Web Development**, and **Machine Learning**. Built with cutting-edge technologies, this portfolio highlights my projects, skills, publications, achievements, and professional journey.",
+  "main": "script.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TM-Mehrab-Hasan/TM-Mehrab-Hasan.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/TM-Mehrab-Hasan/TM-Mehrab-Hasan.github.io/issues"
+  },
+  "homepage": "https://github.com/TM-Mehrab-Hasan/TM-Mehrab-Hasan.github.io#readme",
+  "devDependencies": {
+    "jsdom": "^29.1.1",
+    "vitest": "^4.1.5"
+  }
+}

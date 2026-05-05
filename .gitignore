@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+.DS_Store
+.vscode/
+package-lock.json
+tests/
+vitest.config.js
