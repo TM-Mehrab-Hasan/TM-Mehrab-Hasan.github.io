@@ -13,6 +13,7 @@ class PortfolioApp {
         this.cursorFollower = null;
         this.threeScene = null;
         this.lenis = null;
+        this.animationsInitialized = false;
         
         this.init();
     }
@@ -65,6 +66,13 @@ class PortfolioApp {
         });
         
         gsap.ticker.lagSmoothing(0);
+
+        // Global refresh after any dynamic changes or loading
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                ScrollTrigger.refresh();
+            }, 1000);
+        });
     }
 
     initCustomCursor() {
@@ -127,7 +135,6 @@ class PortfolioApp {
             this.initKonamiCode();
             this.initTestimonials();
             this.initProjectDemos();
-            // Entrance animations will trigger after preloader hides
         };
 
         if (document.readyState === 'loading') {
@@ -321,6 +328,9 @@ class PortfolioApp {
     }
 
     initAnimations() {
+        if (this.animationsInitialized) return;
+        this.animationsInitialized = true;
+
         const sections = document.querySelectorAll('.section');
         
         sections.forEach(section => {
@@ -331,13 +341,13 @@ class PortfolioApp {
                 gsap.from(heading, {
                     scrollTrigger: {
                         trigger: heading,
-                        start: 'top 85%',
+                        start: 'top 90%',
                         toggleActions: 'play none none none'
                     },
-                    y: 60,
+                    y: 40,
                     opacity: 0,
-                    duration: 1.2,
-                    ease: 'power4.out'
+                    duration: 1,
+                    ease: 'power3.out'
                 });
             }
             
@@ -345,26 +355,26 @@ class PortfolioApp {
                 gsap.from(cards, {
                     scrollTrigger: {
                         trigger: section,
-                        start: 'top 75%',
+                        start: 'top 80%',
                         toggleActions: 'play none none none'
                     },
-                    y: 50,
+                    y: 30,
                     opacity: 0,
-                    duration: 1,
-                    stagger: 0.15,
-                    ease: 'power3.out'
+                    duration: 0.8,
+                    stagger: 0.1,
+                    ease: 'power2.out'
                 });
             }
         });
 
-        // Hero Content Stagger
+        // Hero Content Stagger - Immediate visibility
         gsap.from('.hero-content > *', {
-            y: 40,
+            y: 30,
             opacity: 0,
-            duration: 1.2,
-            stagger: 0.2,
-            ease: 'power4.out',
-            delay: 0.5
+            duration: 1,
+            stagger: 0.15,
+            ease: 'power3.out',
+            delay: 0.2
         });
 
         // 3D Scene Rotation Tie
@@ -586,4 +596,4 @@ window.addEventListener('DOMContentLoaded', () => {
     window.portfolioApp = app;
 });
 
-console.log('%c INITIALIZING SS-TIER SYSTEM v1.0.5 ', 'background: #0077b6; color: #fff; font-weight: bold; padding: 5px; border-radius: 3px;');
+console.log('%c INITIALIZING SS-TIER SYSTEM v1.0.6 ', 'background: #0077b6; color: #fff; font-weight: bold; padding: 5px; border-radius: 3px;');
