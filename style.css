@@ -2906,7 +2906,7 @@ body::before {
 .back-to-top {
     position: fixed;
     bottom: 2rem;
-    right: 2rem;
+    left: 2rem;
     width: 50px;
     height: 50px;
     background: var(--gradient-primary);
@@ -3159,7 +3159,7 @@ body::before {
     
     .back-to-top {
         bottom: 1rem;
-        right: 1rem;
+        left: 1rem;
         width: 45px;
         height: 45px;
     }
