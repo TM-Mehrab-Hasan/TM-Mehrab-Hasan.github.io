@@ -12,8 +12,8 @@ export class AIChatbot {
         
         // Google Gemini API Configuration
         this.apiKey = 'AIzaSyCf9MufZJ9uYz7rVG3Cb0rSZsmTmeAFrW4';
-        this.model = 'gemini-pro';
-        this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+        this.model = 'gemini-1.5-flash';
+        this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
         
         if (!this.hud || !this.input) return;
         
