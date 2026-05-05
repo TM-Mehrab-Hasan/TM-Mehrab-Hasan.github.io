@@ -5,6 +5,7 @@
 
 class PortfolioApp {
     constructor() {
+        window.portfolioApp = this; // Bind early
         this.isLoaded = false;
         this.isMobile = window.innerWidth <= 768;
         this.scrollProgress = 0;
@@ -585,4 +586,4 @@ window.addEventListener('DOMContentLoaded', () => {
     window.portfolioApp = app;
 });
 
-console.log('%c INITIALIZING SS-TIER SYSTEM ', 'background: #0077b6; color: #fff; font-weight: bold; padding: 5px; border-radius: 3px;');
+console.log('%c INITIALIZING SS-TIER SYSTEM v1.0.4 ', 'background: #0077b6; color: #fff; font-weight: bold; padding: 5px; border-radius: 3px;');
