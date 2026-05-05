@@ -25,7 +25,7 @@ class PortfolioApp {
     }
 
     setupEventListeners() {
-        document.addEventListener('DOMContentLoaded', () => {
+        const initDOM = () => {
             this.isLoaded = true;
             this.initAOS();
             this.initTypewriter();
@@ -38,7 +38,13 @@ class PortfolioApp {
             this.initKonamiCode();
             this.initTestimonials();
             this.initProjectDemos();
-        });
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initDOM);
+        } else {
+            initDOM();
+        }
 
         window.addEventListener('load', () => {
             this.hidePreloader();
@@ -49,7 +55,16 @@ class PortfolioApp {
         });
 
         window.addEventListener('scroll', () => {
+            this.throttledScroll();
+        }, { passive: true });
+    }
+
+    throttledScroll() {
+        if (this.scrollTick) return;
+        this.scrollTick = true;
+        requestAnimationFrame(() => {
             this.handleScroll();
+            this.scrollTick = false;
         });
     }
 
@@ -139,25 +154,11 @@ class PortfolioApp {
 
     // Scroll Effects
     initScrollEffects() {
-        const scrollIndicator = document.querySelector('.scroll-indicator');
-        const navbar = document.querySelector('.navbar');
-        
-        if (!scrollIndicator || !navbar) return;
-
-        window.addEventListener('scroll', () => {
-            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            scrollIndicator.style.width = scrollPercent + '%';
-            
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        // Consolidated into handleScroll for performance
     }
 
     handleScroll() {
-        const scrollTop = window.scrollY;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const windowHeight = window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight;
         
@@ -170,6 +171,16 @@ class PortfolioApp {
         const scrollIndicator = document.querySelector('.scroll-indicator');
         if (scrollIndicator) {
             scrollIndicator.style.width = (this.scrollProgress * 100) + '%';
+        }
+        
+        // Navbar scrolled state
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            if (scrollTop > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         }
         
         // Show/hide back to top button
@@ -305,10 +316,19 @@ class PortfolioApp {
                 mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
             });
             
+            // Visibility detection to save resources
+            let isVisible = true;
+            const visibilityObserver = new IntersectionObserver((entries) => {
+                isVisible = entries[0].isIntersecting;
+            }, { threshold: 0 });
+            visibilityObserver.observe(container);
+
             // Animation loop
             const animate = () => {
                 requestAnimationFrame(animate);
                 
+                if (!isVisible || document.hidden) return;
+
                 // Rotate particles
                 particlesMesh.rotation.x += 0.0003;
                 particlesMesh.rotation.y += 0.0005;
@@ -714,33 +734,85 @@ class PortfolioApp {
             
             // Show loading state
             const originalText = submitButton.innerHTML;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Sending...</span>';
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Sending...</span>';
             submitButton.disabled = true;
+            submitButton.classList.add('loading');
             
             try {
-                // Simulate form submission (replace with actual Google Forms URL)
+                // Submit to Google Forms
                 await this.simulateFormSubmission(formData);
                 
-                // Show success message
-                if (successMessage) {
-                    successMessage.classList.add('show');
-                    form.reset();
-                    
-                    // Hide success message after 5 seconds
-                    setTimeout(() => {
-                        successMessage.classList.remove('show');
-                    }, 5000);
-                }
+                // Success: Hide form and show message with animation
+                form.style.opacity = '0';
+                form.style.transform = 'translateY(-20px)';
+                
+                setTimeout(() => {
+                    form.style.display = 'none';
+                    if (successMessage) {
+                        successMessage.style.display = 'block';
+                        setTimeout(() => successMessage.classList.add('show'), 50);
+                    }
+                    // Add confetti effect for extra "wow" factor
+                    this.createConfetti();
+                }, 300);
                 
             } catch (error) {
                 console.error('Form submission error:', error);
-                alert('There was an error sending your message. Please try again.');
+                this.showNotification('There was an error sending your message. Please try again.', 'error');
+            } finally {
+                // Reset button (only if form still visible)
+                if (form.style.display !== 'none') {
+                    submitButton.innerHTML = originalText;
+                    submitButton.disabled = false;
+                    submitButton.classList.remove('loading');
+                }
             }
-            
-            // Reset button
-            submitButton.innerHTML = originalText;
-            submitButton.disabled = false;
         });
+    }
+
+    createConfetti() {
+        const colors = ['#0077b6', '#00b4d8', '#06d6a0', '#ffd166'];
+        const container = document.body;
+        
+        for (let i = 0; i < 100; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti-piece';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.width = Math.random() * 10 + 5 + 'px';
+            confetti.style.height = Math.random() * 10 + 5 + 'px';
+            confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+            confetti.style.opacity = Math.random();
+            
+            container.appendChild(confetti);
+            
+            // Remove confetti after animation
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+        
+        // Add dynamic styles for confetti if not present
+        if (!document.getElementById('confetti-styles')) {
+            const style = document.createElement('style');
+            style.id = 'confetti-styles';
+            style.textContent = `
+                .confetti-piece {
+                    position: fixed;
+                    top: -20px;
+                    z-index: 10000;
+                    pointer-events: none;
+                    animation: confetti-fall linear forwards;
+                    border-radius: 2px;
+                }
+                @keyframes confetti-fall {
+                    0% { transform: translateY(0) rotate(0deg); }
+                    100% { transform: translateY(110vh) rotate(720deg); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
     }
 
     async simulateFormSubmission(formData) {
@@ -793,13 +865,21 @@ class PortfolioApp {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
                 e.preventDefault();
-                const target = document.querySelector(anchor.getAttribute('href'));
+                const targetId = anchor.getAttribute('href');
+                const target = document.querySelector(targetId);
                 if (target) {
                     const offsetTop = target.offsetTop - 80;
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
                     });
+                    
+                    // Update URL hash without jumping
+                    history.pushState(null, null, targetId);
+                    
+                    // Set focus for accessibility
+                    target.setAttribute('tabindex', '-1');
+                    target.focus({ preventScroll: true });
                 }
             });
         });

@@ -66,7 +66,7 @@
     <div class="preloader" id="preloader">
         <div class="preloader-content">
             <div class="logo-preloader">
-                <img src="images/logo.png" alt="TM Logo" style="width: 80px; height: 80px; object-fit: contain;">
+                <img src="images/logo.png" alt="TM Logo" decoding="async" style="width: 80px; height: 80px; object-fit: contain;">
             </div>
             <div class="loading-text">Loading Portfolio...</div>
             <div class="loading-bar">
@@ -95,7 +95,7 @@
                 <span class="brand-logo">TM</span>
                 <span class="brand-text">.MEHRAB</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -962,8 +962,8 @@
                     <div class="project-image">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                <a href="#" class="project-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link" aria-label="Source Code"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                         <div class="project-icon">
@@ -997,8 +997,8 @@
                     <div class="project-image">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                <a href="#" class="project-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link" aria-label="Source Code"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                         <div class="project-icon">
@@ -1032,9 +1032,9 @@
                     <div class="project-image">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link demo-link" data-demo="fire-robot"><i class="fas fa-play"></i></a>
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="https://github.com/TM-Mehrab-Hasan/Early-Stage-Fire-Detection-Robot" class="project-link"><i class="fab fa-github"></i></a>
+                                <a href="#" class="project-link demo-link" data-demo="fire-robot" aria-label="Watch Demo"><i class="fas fa-play"></i></a>
+                                <a href="#" class="project-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/TM-Mehrab-Hasan/Early-Stage-Fire-Detection-Robot" class="project-link" aria-label="Source Code"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                         <div class="project-icon">
@@ -1412,7 +1412,7 @@
                             <span class="keyword">Cloud Analytics</span>
                             <span class="keyword">Real-time Systems</span>
                         </div>
-                        <a href="https://ieeexplore.ieee.org/document/11381662" target="_blank" class="publication-link">
+                        <a href="https://ieeexplore.ieee.org/document/11381662" target="_blank" rel="noopener noreferrer" class="publication-link" aria-label="Read Publication">
                             <i class="fas fa-external-link-alt"></i> View on IEEE Xplore
                         </a>
                     </div>
@@ -1447,7 +1447,7 @@
                             <span class="keyword">Cloud Analytics</span>
                             <span class="keyword">Real-time Systems</span>
                         </div>
-                        <a href="https://arxiv.org/abs/2601.08394" target="_blank" class="publication-link">
+                        <a href="https://arxiv.org/abs/2601.08394" target="_blank" class="publication-link" aria-label="Read Publication">
                             <i class="fas fa-external-link-alt"></i> View on arXiv
                         </a>
                     </div>
@@ -1482,7 +1482,7 @@
                             <span class="keyword">Ensemble ML</span>
                             <span class="keyword">Environmental Monitoring</span>
                         </div>
-                        <a href="https://ieeexplore.ieee.org/document/11381747" target="_blank" class="publication-link">
+                        <a href="https://ieeexplore.ieee.org/document/11381747" target="_blank" class="publication-link" aria-label="Read Publication">
                             <i class="fas fa-external-link-alt"></i> View on IEEE Xplore
                         </a>
                     </div>
@@ -1513,7 +1513,7 @@
                             <span class="keyword">Disease Detection</span>
                             <span class="keyword">Livestock Management</span>
                         </div>
-                        <a href="https://arxiv.org/abs/2601.12889" target="_blank" class="publication-link">
+                        <a href="https://arxiv.org/abs/2601.12889" target="_blank" class="publication-link" aria-label="Read Publication">
                             <i class="fas fa-external-link-alt"></i> View on arXiv
                         </a>
                     </div>
@@ -1957,10 +1957,10 @@
                     <i class="fas fa-chevron-left"></i>
                 </button>
                 <div class="nav-dots">
-                    <span class="dot active" onclick="portfolioApp.currentTestimonial(0)"></span>
-                    <span class="dot" onclick="portfolioApp.currentTestimonial(1)"></span>
-                    <span class="dot" onclick="portfolioApp.currentTestimonial(2)"></span>
-                    <span class="dot" onclick="portfolioApp.currentTestimonial(3)"></span>
+                    <button class="dot active" onclick="portfolioApp.currentTestimonial(0)" aria-label="Go to testimonial 1"></button>
+                    <button class="dot" onclick="portfolioApp.currentTestimonial(1)" aria-label="Go to testimonial 2"></button>
+                    <button class="dot" onclick="portfolioApp.currentTestimonial(2)" aria-label="Go to testimonial 3"></button>
+                    <button class="dot" onclick="portfolioApp.currentTestimonial(3)" aria-label="Go to testimonial 4"></button>
                 </div>
                 <button class="nav-btn next-btn" onclick="portfolioApp.nextTestimonial()">
                     <i class="fas fa-chevron-right"></i>
@@ -2066,20 +2066,20 @@
                             <div class="form-grid">
                                 <div class="form-group">
                                     <label for="name">Full Name</label>
-                                    <input type="text" id="name" name="entry.166786655" class="form-control" placeholder="John Doe" required>
+                                    <input type="text" id="name" name="entry.166786655" class="form-control" placeholder="John Doe" required aria-required="true" autocomplete="name">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email Address</label>
-                                    <input type="email" id="email" name="entry.101374180" class="form-control" placeholder="john@example.com" required>
+                                    <input type="email" id="email" name="entry.101374180" class="form-control" placeholder="john@example.com" required aria-required="true" autocomplete="email">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="entry.1647048671" class="form-control" placeholder="Project Discussion" required>
+                                <input type="text" id="subject" name="entry.1647048671" class="form-control" placeholder="Project Discussion" required aria-required="true">
                             </div>
                             <div class="form-group">
                                 <label for="message">Message</label>
-                                <textarea id="message" name="entry.779883203" class="form-control" rows="6" placeholder="Tell me about your project or inquiry..." required></textarea>
+                                <textarea id="message" name="entry.779883203" class="form-control" rows="6" placeholder="Tell me about your project or inquiry..." required aria-required="true"></textarea>
                             </div>
                             <div class="form-actions">
                                 <button type="submit" class="btn-primary">

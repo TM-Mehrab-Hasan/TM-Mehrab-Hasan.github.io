@@ -26,7 +26,7 @@
     
     --text-primary: #f8fafc;
     --text-secondary: #94a3b8;
-    --text-muted: #64748b;
+    --text-muted: #94a3b8; /* Brightened from #64748b for better contrast */
     
     --border-primary: rgba(0, 180, 216, 0.2);
     --border-secondary: rgba(255, 255, 255, 0.08);
@@ -2527,9 +2527,9 @@ body {
 }
 
 .form-control:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.2);
     background: var(--bg-glass-hover);
 }
 
@@ -3438,12 +3438,19 @@ body {
     background: var(--border-primary);
     cursor: pointer;
     transition: all var(--transition-normal);
+    border: none;
+    padding: 0;
+    outline: none;
 }
 
 .dot.active,
 .dot:hover {
     background: var(--primary-color);
     transform: scale(1.2);
+}
+
+.dot:focus-visible {
+    box-shadow: 0 0 0 3px var(--primary-light);
 }
 
 /* Enhanced Project Features */
