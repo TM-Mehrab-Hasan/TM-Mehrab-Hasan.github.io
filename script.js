@@ -523,11 +523,11 @@ class PortfolioApp {
             this.currTestIdx = idx;
         };
 
-        window.portfolioApp.nextTestimonial = () => show((this.currTestIdx + 1) % cards.length);
-        window.portfolioApp.previousTestimonial = () => show(this.currTestIdx === 0 ? cards.length - 1 : this.currTestIdx - 1);
-        window.portfolioApp.currentTestimonial = (idx) => show(idx);
+        this.nextTestimonial = () => show((this.currTestIdx + 1) % cards.length);
+        this.previousTestimonial = () => show(this.currTestIdx === 0 ? cards.length - 1 : this.currTestIdx - 1);
+        this.currentTestimonial = (idx) => show(idx);
 
-        setInterval(() => window.portfolioApp.nextTestimonial(), 5000);
+        setInterval(() => this.nextTestimonial(), 5000);
     }
 
     initKonamiCode() {
