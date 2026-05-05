@@ -21,12 +21,6 @@ export class ThreeScene {
             return;
         }
         
-        this.scene = null;
-        this.camera = null;
-        this.renderer = null;
-        this.points = null;
-        this.lines = null;
-        this.nodes = [];
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
 
