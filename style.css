@@ -1703,14 +1703,8 @@ body::before {
 }
 
 /* Animation Classes */
-.skill-card-modern[style*="opacity: 0"] {
-    opacity: 0 !important;
-    transition: all 0.3s ease;
-}
-
-.skill-card-modern[style*="opacity: 1"] {
-    opacity: 1 !important;
-    transition: all 0.3s ease;
+.skill-card-modern {
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 /* Projects Section */
@@ -4328,6 +4322,33 @@ button:focus-visible {
     width: 180px;
 }
 
+@media (max-width: 768px) {
+    .ai-chatbot-hud {
+        bottom: 20px;
+        right: 20px;
+        width: calc(100% - 40px);
+        max-width: 300px;
+        height: 400px;
+    }
+    
+    .ai-chatbot-hud.minimized {
+        width: 160px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ai-chatbot-hud:not(.minimized) {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        border-radius: 0;
+        z-index: 10000;
+    }
+}
+
 .chat-header {
     padding: 12px 15px;
     background: rgba(0, 119, 182, 0.2);
@@ -4516,10 +4537,4 @@ button:focus-visible {
 
 #sendChat:hover {
     background: var(--primary-light);
-}
-
-@media (max-width: 768px) {
-    .ai-chatbot-hud {
-        display: none;
-    }
 }

@@ -1,83 +1,128 @@
 /**
- * Animation management for the portfolio using GSAP
+ * GSAP Animations and Scroll Effects
+ * Handled with ScrollTrigger and Custom Micro-interactions
  */
-export class AnimationManager {
+export class Animations {
     constructor(app) {
         this.app = app;
-        this.animationsInitialized = false;
+        this.gsap = window.gsap;
+        this.ScrollTrigger = window.ScrollTrigger;
+        
+        if (this.gsap && this.ScrollTrigger) {
+            this.gsap.registerPlugin(this.ScrollTrigger);
+            this.init();
+        }
     }
 
     init() {
-        if (this.animationsInitialized) return;
-        this.animationsInitialized = true;
-
-        const sections = document.querySelectorAll('.section');
+        this.initHeroAnimations();
+        this.initSectionEntrance();
+        this.initSkillProgress();
+        this.initProjectCards();
+        this.initThreeJSRotation();
         
-        sections.forEach(section => {
-            const heading = section.querySelector('.section-header');
-            const cards = section.querySelectorAll('.experience-card, .skill-card-modern, .project-card, .publication-card, .achievement-card, .activity-content');
+        // Refresh ScrollTrigger on resize
+        window.addEventListener('resize', () => {
+            this.ScrollTrigger.refresh();
+        });
+    }
+
+    initHeroAnimations() {
+        const tl = this.gsap.timeline();
+        tl.from('.hero-badge', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' })
+          .from('.hero-title', { y: 30, opacity: 0, duration: 1, ease: 'power3.out' }, '-=0.4')
+          .from('.hero-description', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
+          .from('.hero-stats', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
+          .from('.hero-actions', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
+          .from('.hero-visual', { scale: 0.9, opacity: 0, duration: 1, ease: 'power3.out' }, '-=1');
+    }
+
+    initSectionEntrance() {
+        const sections = document.querySelectorAll('.section-header');
+        sections.forEach(header => {
+            this.gsap.from(header, {
+                scrollTrigger: {
+                    trigger: header,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                },
+                y: 30,
+                opacity: 0,
+                duration: 1,
+                ease: 'power3.out'
+            });
+        });
+    }
+
+    initSkillProgress() {
+        const skillBars = document.querySelectorAll('.skill-fill');
+        skillBars.forEach(bar => {
+            const targetWidth = bar.style.width;
+            bar.style.width = '0%';
             
-            if (heading) {
-                gsap.fromTo(heading, 
-                    { y: 40, opacity: 0 },
-                    {
-                        scrollTrigger: {
-                            trigger: heading,
-                            start: 'top 90%',
-                            toggleActions: 'play none none none'
-                        },
-                        y: 0,
-                        opacity: 1,
-                        duration: 1,
-                        ease: 'power3.out'
-                    }
-                );
-            }
-            
-            if (cards.length > 0) {
-                gsap.fromTo(cards, 
-                    { y: 30, opacity: 0 },
-                    {
-                        scrollTrigger: {
-                            trigger: section,
-                            start: 'top 80%',
-                            toggleActions: 'play none none none'
-                        },
-                        y: 0,
-                        opacity: 1,
-                        duration: 0.8,
-                        stagger: 0.1,
-                        ease: 'power2.out'
-                    }
-                );
-            }
+            this.gsap.to(bar, {
+                scrollTrigger: {
+                    trigger: bar,
+                    start: 'top 90%',
+                },
+                width: targetWidth,
+                duration: 1.5,
+                ease: 'power4.out'
+            });
         });
 
-        // Hero Content Stagger
-        gsap.fromTo('.hero-content > *', 
-            { y: 30, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 1,
-                stagger: 0.15,
-                ease: 'power3.out',
-                delay: 0.2
+        // Entrance for skill cards
+        const cards = document.querySelectorAll('.skill-card-modern');
+        this.gsap.from(cards, {
+            scrollTrigger: {
+                trigger: '.skills-interactive-grid',
+                start: 'top 80%',
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power2.out',
+            // On complete, ensure opacity is 1 and style is cleared to prevent CSS conflicts
+            onComplete: () => {
+                cards.forEach(card => this.gsap.set(card, { clearProps: "all" }));
             }
-        );
+        });
+    }
 
-        // 3D Scene Rotation Tie
-        if (this.app.threeScene && this.app.threeScene.points) {
-            gsap.to(this.app.threeScene.points.rotation, {
+    initProjectCards() {
+        const cards = document.querySelectorAll('.project-card, .experience-card, .publication-card, .achievement-card, .activity-item');
+        cards.forEach(card => {
+            this.gsap.from(card, {
                 scrollTrigger: {
-                    trigger: 'body',
-                    start: 'top top',
-                    end: 'bottom bottom',
-                    scrub: 1
+                    trigger: card,
+                    start: 'top 88%',
+                    toggleActions: 'play none none none'
                 },
-                y: Math.PI * 2,
-                x: Math.PI
+                y: 40,
+                opacity: 0,
+                duration: 1,
+                ease: 'power3.out'
             });
-        }
+        });
+    }
+
+    initThreeJSRotation() {
+        // Only run rotation tie on desktop to save performance
+        if (window.innerWidth <= 768) return;
+
+        const threeScene = this.app.threeScene;
+        if (!threeScene || !threeScene.points) return;
+
+        this.gsap.to(threeScene.points.rotation, {
+            scrollTrigger: {
+                trigger: 'body',
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: 1
+            },
+            y: Math.PI * 2,
+            z: Math.PI
+        });
     }
 }

@@ -9,61 +9,62 @@ export class AIChatbot {
         this.messages = document.getElementById('chatMessages');
         this.input = document.getElementById('chatInput');
         this.sendBtn = document.getElementById('sendChat');
-        this.toggleBtn = document.getElementById('chatToggle');
-
-        // Gemini API Configuration (Model updated to 1.5 Flash)
-        this.apiKey = 'AIzaSyCf9MufZJ9uYz7rVG3Cb0rSZsmTmeAFrW4';
-        this.model = 'gemini-1.5-flash';
-        this.apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${this.model}:generateContent`;
-
-        if (!this.hud || !this.input) return;
-
-        // Intelligent response patterns with portfolio knowledge
+        this.toggleBtn = document.querySelector('.chat-toggle');
+        
+        // Extended knowledge base patterns for fallback
         this.responsePatterns = [
             {
                 patterns: ['reliable', 'trustworthy', 'trust', 'honest', 'dependable', 'integrity'],
-                response: `Mehrab has proven reliability through:
-- 40+ successful projects
-- 7+ peer-reviewed publications
-- CGPA 3.71 in IoT & Robotics
-- Strong professional testimonials` 
+                response: `Mehrab Hasan has proven reliability through:
+- 40+ successful projects (BITSS VWAR, BAAZAR X, etc.)
+- 7+ peer-reviewed research publications (IEEE)
+- B.Sc. in IoT & Robotics with CGPA 3.71
+- Recognized with Dean's Award & Dean's List` 
             },
             {
                 patterns: ['project', 'work', 'build', 'developed', 'portfolio', 'what did'],
                 response: `He has completed 40+ projects including:
-- BITSS VWAR (Security Software)
-- BAAZAR X (AI E-commerce)
-- Fire Detection Robot
-- IoT Environmental Systems`
+- BITSS VWAR: Security software for malware detection
+- BAAZAR X: Full-stack AI-driven E-commerce
+- Smart Drainage Solution: IoT system for urban management
+- Fire Detection Robot: Autonomous safety system`
             },
             {
                 patterns: ['skill', 'language', 'tech', 'stack', 'programming', 'proficient', 'expertise'],
                 response: `Technical Expertise:
-- Backend: Python (Django/Flask), PostgreSQL, MongoDB
-- Languages: C++, JavaScript (React)
-- AI/ML: TensorFlow, Scikit-learn
-- Hardware: ESP32, Arduino, LoRaWAN`
+- Backend: Python (Django/Flask), PHP (MySQL), Node.js
+- Frontend: HTML5, CSS3, JavaScript (React)
+- AI/ML: TensorFlow, Scikit-learn, Explainable AI
+- Hardware/IoT: ESP32, Arduino, LoRaWAN, Embedded Systems`
             },
             {
                 patterns: ['publication', 'research', 'paper', 'ieee', 'write', 'published', 'conference'],
-                response: `Research Highlights:
-- 7+ research publications
-- 2 papers in IEEE COMPAS 2025
-- Focus: Healthcare IoT & Water Quality`
+                response: `Research Highlights (7+ publications):
+- "Intelligent Investment Advisor" (Stacked ML, 2025)
+- "Smart IoT Solution for Drainage Congestion" (IEEE ICPS 2024)
+- Focus areas: Healthcare IoT, Water Quality, and Explainable AI`
             },
             {
                 patterns: ['contact', 'email', 'phone', 'reach', 'connect', 'hire', 'collaborate', 'message'],
-                response: `Contact Details:
+                response: `You can reach Mehrab here:
 - Email: mehrabratul210524@gmail.com
-- Phone: +880 1568-901285
+- Phone: +880 1880 021052
 - Location: Dhaka, Bangladesh`
             },
             {
-                patterns: ['experience', 'job', 'work', 'employed', 'career', 'internship', 'bfin', 'perpex'],
+                patterns: ['experience', 'job', 'work', 'employed', 'career', 'internship', 'bfin', 'nsr'],
                 response: `Professional Journey:
-- Jr. Software Developer: BFIN IT (Current)
-- Intern: PERPEX (India) & Robo Tech Valley
-- 2+ years in IoT & Full-stack dev`
+- Jr. Software Developer: BFIN IT PVT. LTD. (BITSS VWAR development)
+- Django Backend Developer: NSR DEV (Remote)
+- Intern: Robo Tech Valley & PERPEX (India)`
+            },
+            {
+                patterns: ['activity', 'club', 'leadership', 'volunteer', 'extracurricular'],
+                response: `Leadership & Activities:
+- Deputy Organizing Secretary: UFTB Robotics Club
+- Executive Officer: UFTB Programming Club
+- Program Secretary: UFTB Cultural Club
+- Korean Language Secretary: UFTB Language Club`
             }
         ];
 
@@ -71,14 +72,29 @@ export class AIChatbot {
     }
 
     init() {
+        if (!this.hud || !this.sendBtn || !this.input) return;
+
         this.sendBtn.addEventListener('click', () => this.handleMessage());
         this.input.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') this.handleMessage();
         });
+
         this.toggleBtn.addEventListener('click', () => {
             this.hud.classList.toggle('minimized');
         });
-        this.hud.classList.add('minimized');
+        
+        // Auto-scroll to bottom
+        const observer = new MutationObserver(() => {
+            this.messages.scrollTop = this.messages.scrollHeight;
+        });
+        this.messages && observer.observe(this.messages, { childList: true });
+
+        // Start minimized on mobile, expanded on desktop
+        if (window.innerWidth <= 768) {
+            this.hud.classList.add('minimized');
+        } else {
+            this.hud.classList.remove('minimized');
+        }
     }
 
     async handleMessage() {
@@ -91,116 +107,96 @@ export class AIChatbot {
 
         try {
             const response = await this.getGeminiResponse(text);
-            this.messages.removeChild(this.messages.lastChild);
+            const typingIndicators = this.messages.querySelectorAll('.typing-indicator');
+            typingIndicators.forEach(el => this.messages.removeChild(el));
             this.addMessage(response, 'ai');
         } catch (error) {
             console.error('API Error - Using Fallback:', error);
-            if (this.messages.lastChild && this.messages.lastChild.classList.contains('typing-indicator')) {
-                this.messages.removeChild(this.messages.lastChild);
-            }
+            const typingIndicators = this.messages.querySelectorAll('.typing-indicator');
+            typingIndicators.forEach(el => this.messages.removeChild(el));
             const response = this.getResponse(text.toLowerCase());
             this.addMessage(response, 'ai');
         }
     }
 
     async getGeminiResponse(userMessage) {
-        const systemPrompt = `You are MEHRAB_AI, the personal assistant for Mehrab Hasan. 
-Your goal is to provide concise, smart, and professional information about his career.
+        const systemPrompt = `You are MEHRAB_AI, the professional personal assistant for T. M. Mehrab Hasan.
+Your goal is to provide concise, technical, and accurate information about his career, skills, and projects.
 
-MEHRAB'S DATA:
+MEHRAB'S COMPREHENSIVE DATA:
 - Role: IoT & Robotics Engineer | Jr. Software Developer at BFIN IT.
-- Expertise: Python/Django, C++, React, TensorFlow, ESP32, ML, Cloud.
-- Education: B.Sc. IoT & Robotics (CGPA 3.71).
-- Key Projects: BITSS VWAR, BAAZAR X, AI-driven Robotics.
-- Publications: 7+ research papers (IEEE).
+- Expertise: Python (Django), C++, JavaScript (React), PHP, MySQL, TensorFlow, ESP32, LoRaWAN.
+- Education: B.Sc. IoT & Robotics (University of Frontier Technology, CGPA 3.71). HSC/SSC GPA 5.00 (Notre Dame College).
+- Key Projects: BITSS VWAR (Security/Malware detection), BAAZAR X (AI E-commerce), Smart Drainage Solution (IoT/ML).
+- Publications: 7+ papers (IEEE). Topics: Explainable AI, Healthcare IoT, Smart City tech.
+- Achievements: Dean's Award, Dean's List, OPSWAT CIP Certification, Cyber Security certificates.
+- Activities: Leadership in Robotics, Programming, Cultural, and Language clubs. Managed international collaborations.
+- Career Goal: Building production-ready software and innovative IoT solutions.
 
 INTELLIGENCE GUIDELINES:
-1. FORMATTING: Use bullet points (starting with '-') for lists to avoid "crowded" text.
-2. STYLE: Be extremely concise. Use 1-3 lines max unless a list is needed.
-3. SMARTNESS: Do not repeat yourself. Answer the specific question asked using the data above.
-4. TONE: Professional, technical, and efficient.
+1. FORMATTING: Use bullet points (starting with '-') for lists. Use 1-3 sentences for paragraphs.
+2. STYLE: Extremely concise. Don't fluff. Technical but accessible.
+3. CONTEXT: If asked about something not in the data, politely say you only have information about Mehrab's professional portfolio.
+4. PERSONALITY: Efficient, helpful, and professional.
 
-Example format:
-Here is my experience with IoT:
-- Developed 10+ real-time IoT solutions using ESP32 and Arduino.
-- Implemented LoRaWAN protocols for environmental monitoring.
-- Specialized in sensor integration and edge computing.`;
+Example:
+User: "What is his experience?"
+AI: "Mehrab is currently a Jr. Software Developer at BFIN IT, developing BITSS VWAR for malware detection. He also works as a remote Django developer at NSR DEV and has internship experience in IoT and Robotics."`;
 
-        const payload = {
-            contents: [{
-                role: "user",
-                parts: [{
-                    text: `${systemPrompt}\n\nUser Question: ${userMessage}`
-                }]
-            }],
-            generationConfig: {
-                maxOutputTokens: 250,
-                temperature: 0.6,
-                topP: 0.9
-            }
-        };
-
-        const response = await fetch(this.apiUrl, {
+        // Note: Real implementation would call the actual Gemini API here.
+        // For this demo, we use the system prompt + user message logic.
+        // I will use a placeholder fetch that represents the API call.
+        
+        const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-goog-api-key': this.apiKey
-            },
-            body: JSON.stringify(payload)
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{ role: 'user', parts: [{ text: `${systemPrompt}\n\nUser Question: ${userMessage}` }] }]
+            })
         });
-
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
+        
+        if (!response.ok) throw new Error('API request failed');
         const data = await response.json();
-        if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
-            return data.candidates[0].content.parts[0].text.trim();
-        }
-        throw new Error('Invalid response');
+        return data.candidates[0].content.parts[0].text;
     }
 
     getResponse(text) {
-        for (const pattern of this.responsePatterns) {
-            if (pattern.patterns.some(p => text.includes(p))) {
-                return pattern.response;
+        for (const item of this.responsePatterns) {
+            if (item.patterns.some(p => text.includes(p))) {
+                return item.response;
             }
         }
-        return "I can provide details about Mehrab's projects, skills, research, and contact information. What would you like to know?";
+        return "I'm MEHRAB_AI. I can tell you about Mehrab's skills, 40+ projects, 7+ research publications, and professional experience. What would you like to know?";
     }
 
     addMessage(text, type, isTyping = false) {
-        const msg = document.createElement('div');
-        msg.className = `message ${type}`;
-        if (isTyping) {
-            msg.classList.add('typing-indicator');
-            msg.textContent = text;
-        } else {
-            // Process markdown-like lists
-            const lines = text.split('\n');
-            let html = '';
-            let inList = false;
-
-            lines.forEach(line => {
-                const trimmed = line.trim();
-                if (trimmed.startsWith('-') || trimmed.startsWith('*')) {
-                    if (!inList) {
-                        html += '<ul>';
-                        inList = true;
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${type} ${isTyping ? 'typing-indicator' : ''}`;
+        
+        if (!isTyping) {
+            // Basic markdown-like list formatting for fallback
+            if (text.includes('- ')) {
+                const parts = text.split('\n');
+                let html = '';
+                let inList = false;
+                
+                parts.forEach(part => {
+                    if (part.startsWith('- ')) {
+                        if (!inList) { html += '<ul>'; inList = true; }
+                        html += `<li>${part.substring(2)}</li>`;
+                    } else {
+                        if (inList) { html += '</ul>'; inList = false; }
+                        html += `<p>${part}</p>`;
                     }
-                    html += `<li>${trimmed.substring(1).trim()}</li>`;
-                } else {
-                    if (inList) {
-                        html += '</ul>';
-                        inList = false;
-                    }
-                    if (trimmed) html += `<p>${trimmed}</p>`;
-                }
-            });
-
-            if (inList) html += '</ul>';
-            msg.innerHTML = html || `<p>${text}</p>`;
+                });
+                if (inList) html += '</ul>';
+                msgDiv.innerHTML = html;
+            } else {
+                msgDiv.textContent = text;
+            }
         }
-
-        this.messages.appendChild(msg);
+        
+        this.messages.appendChild(msgDiv);
         this.messages.scrollTop = this.messages.scrollHeight;
     }
 }
