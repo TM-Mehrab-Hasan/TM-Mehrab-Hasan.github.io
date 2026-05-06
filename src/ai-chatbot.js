@@ -10,7 +10,7 @@ export class AIChatbot {
         this.input = document.getElementById('chatInput');
         this.sendBtn = document.getElementById('sendChat');
         this.toggleBtn = document.querySelector('.chat-toggle');
-        
+
         // Extended knowledge base patterns for fallback
         this.responsePatterns = [
             {
@@ -19,7 +19,7 @@ export class AIChatbot {
 - 40+ successful projects (BITSS VWAR, BAAZAR X, etc.)
 - 7+ peer-reviewed research publications (IEEE)
 - B.Sc. in IoT & Robotics with CGPA 3.71
-- Recognized with Dean's Award & Dean's List` 
+- Recognized with Dean's Award & Dean's List`
             },
             {
                 patterns: ['project', 'work', 'build', 'developed', 'portfolio', 'what did'],
@@ -103,7 +103,7 @@ export class AIChatbot {
         this.toggleBtn.addEventListener('click', () => {
             this.hud.classList.toggle('minimized');
         });
-        
+
         const observer = new MutationObserver(() => {
             this.messages.scrollTop = this.messages.scrollHeight;
         });
@@ -169,7 +169,7 @@ AI: "Mehrab is currently a Jr. Software Developer at BFIN IT, developing BITSS V
                 contents: [{ role: 'user', parts: [{ text: `${systemPrompt}\n\nUser Question: ${userMessage}` }] }]
             })
         });
-        
+
         if (!response.ok) throw new Error('API request failed');
         const data = await response.json();
         return data.candidates[0].content.parts[0].text;
@@ -187,13 +187,13 @@ AI: "Mehrab is currently a Jr. Software Developer at BFIN IT, developing BITSS V
     addMessage(text, type, isTyping = false) {
         const msgDiv = document.createElement('div');
         msgDiv.className = `message ${type} ${isTyping ? 'typing-indicator' : ''}`;
-        
+
         if (!isTyping) {
             if (text.includes('- ')) {
                 const parts = text.split('\n');
                 let html = '';
                 let inList = false;
-                
+
                 parts.forEach(part => {
                     if (part.startsWith('- ')) {
                         if (!inList) { html += '<ul>'; inList = true; }
@@ -209,7 +209,7 @@ AI: "Mehrab is currently a Jr. Software Developer at BFIN IT, developing BITSS V
                 msgDiv.textContent = text;
             }
         }
-        
+
         this.messages.appendChild(msgDiv);
         this.messages.scrollTop = this.messages.scrollHeight;
     }
