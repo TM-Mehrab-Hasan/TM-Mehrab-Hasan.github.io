@@ -482,14 +482,14 @@ body::before {
 }
 
 [data-theme="light"] .navbar {
-    background: rgba(10, 25, 50, 0.95) !important;
-    border-bottom: 1px solid rgba(0, 180, 216, 0.3);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-bottom: 1px solid rgba(2, 12, 27, 0.1);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
 }
 
 [data-theme="light"] .navbar.scrolled {
-    background: rgba(5, 15, 35, 0.98) !important;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.98) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand {
@@ -500,6 +500,17 @@ body::before {
     font-size: 1.5rem;
     color: var(--text-primary) !important;
     text-decoration: none;
+}
+
+[data-theme="light"] .navbar-brand {
+    color: #020c1b !important;
+}
+
+[data-theme="light"] .brand-text {
+    background: #020c1b;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .brand-logo {
@@ -513,6 +524,10 @@ body::before {
     font-weight: 900;
     font-size: 1.2rem;
     color: white;
+}
+
+[data-theme="light"] .brand-logo {
+    background: #020c1b;
 }
 
 .brand-text {
@@ -542,6 +557,10 @@ body::before {
     border-radius: 1px;
 }
 
+[data-theme="light"] .navbar-toggler span {
+    background: #020c1b;
+}
+
 .navbar-toggler[aria-expanded="true"] span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
@@ -566,6 +585,19 @@ body::before {
     overflow: hidden;
 }
 
+@media (min-width: 992px) {
+    [data-theme="light"] .navbar-nav .nav-link {
+        color: #020c1b !important;
+        font-weight: 600;
+    }
+    
+    [data-theme="light"] .navbar-nav .nav-link:hover,
+    [data-theme="light"] .navbar-nav .nav-link.active {
+        color: var(--primary-color) !important;
+        background: rgba(2, 12, 27, 0.05);
+    }
+}
+
 .navbar-nav .nav-link::before {
     content: '';
     position: absolute;
@@ -588,22 +620,11 @@ body::before {
     left: 0;
 }
 
-/* Light mode navbar text fix - ensure visibility on dark navbar */
-[data-theme="light"] .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 0.85) !important;
-}
-
-[data-theme="light"] .navbar-nav .nav-link:hover,
-[data-theme="light"] .navbar-nav .nav-link.active {
-    color: #ffffff !important;
-}
-
-[data-theme="light"] .navbar-brand {
-    color: #ffffff !important;
-}
-
-[data-theme="light"] .navbar-brand .brand-name {
-    color: #ffffff !important;
+/* Light mode navbar text fix - MOBILE (keeps visibility) */
+@media (max-width: 991px) {
+    [data-theme="light"] .navbar-nav .nav-link {
+        color: #020c1b !important;
+    }
 }
 
 /* Hero Section */
