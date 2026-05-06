@@ -2,6 +2,7 @@ import { ThreeScene } from './three-scene.js';
 import { Animations } from './animations.js';
 import { AIChatbot } from './ai-chatbot.js';
 import { StatusHUD } from './status-hud.js';
+import { ThemeManager } from './theme.js';
 import * as utils from './utils.js';
 
 class App {
@@ -15,12 +16,12 @@ class App {
         this.animations = new Animations(this);
         this.chatbot = new AIChatbot(this);
         this.statusHUD = new StatusHUD(this);
+        this.themeManager = new ThemeManager();
 
         // Setup smooth scrolling
         this.initLenis();
 
         // Global utilities
-        utils.initThemeToggle();
         utils.setupContactForm();
         utils.setupPerformanceOptimizations();
         utils.setupScrollSpy();

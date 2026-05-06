@@ -50,3 +50,59 @@ export function setupPerformanceOptimizations() {
     });
     document.querySelectorAll('img[data-src]').forEach(img => observer.observe(img));
 }
+
+export function setupContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const successMsg = document.querySelector('.success-message');
+
+        if (submitBtn) submitBtn.disabled = true;
+
+        try {
+            // Google Forms Integration via no-cors
+            const googleFormUrl = form.getAttribute('action');
+            if (googleFormUrl) {
+                await fetch(googleFormUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                });
+            }
+            
+            form.style.display = 'none';
+            if (successMsg) successMsg.classList.add('show');
+        } catch (error) {
+            console.error('Submission error:', error);
+            alert('Something went wrong. Please try again or email directly.');
+            if (submitBtn) submitBtn.disabled = false;
+        }
+    });
+}
+
+export function setupScrollSpy() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.pageYOffset >= sectionTop - 150) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+}
