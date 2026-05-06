@@ -649,7 +649,6 @@ body::before {
     font-weight: 500;
     color: var(--accent-color);
     margin-bottom: 2rem;
-    animation: fadeInUp 0.8s ease 0.2s both;
 }
 
 .hero-badge i {
@@ -669,7 +668,6 @@ body::before {
     font-weight: 400;
     color: var(--text-secondary);
     margin-bottom: 0.5rem;
-    animation: fadeInUp 0.8s ease 0.4s both;
 }
 
 .title-name {
@@ -678,7 +676,6 @@ body::before {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: fadeInUp 0.8s ease 0.6s both;
 }
 
 .title-role {
@@ -687,7 +684,6 @@ body::before {
     font-weight: 500;
     color: var(--text-secondary);
     font-family: var(--font-mono);
-    animation: fadeInUp 0.8s ease 0.8s both;
 }
 
 .typewriter {
@@ -2899,8 +2895,8 @@ body::before {
 /* Back to Top Button */
 .back-to-top {
     position: fixed;
-    bottom: 2rem;
-    left: 2rem;
+    bottom: 30px;
+    left: 30px;
     width: 50px;
     height: 50px;
     background: var(--gradient-primary);
@@ -4089,8 +4085,7 @@ button:focus-visible {
     .cursor,
     .cursor-follower,
     .theme-toggle,
-    .scroll-indicator,
-    .back-to-top {
+    .scroll-indicator {
         display: none !important;
     }
 }

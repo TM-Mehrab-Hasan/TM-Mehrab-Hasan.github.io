@@ -12,7 +12,7 @@ class App {
 
     async init() {
         // Initialize Core Components
-        this.threeScene = new ThreeScene();
+        this.threeScene = new ThreeScene('three-container', this);
         this.animations = new Animations(this);
         this.chatbot = new AIChatbot(this);
         this.statusHUD = new StatusHUD(this);
@@ -22,6 +22,13 @@ class App {
         this.initLenis();
 
         // Global utilities
+        utils.initTypewriter('.typewriter', [
+            'IoT & Robotics Engineer',
+            'Django Backend Developer',
+            'Full Stack Web Enthusiast',
+            'AI/ML Researcher'
+        ]);
+        utils.setupBackToTop();
         utils.setupContactForm();
         utils.setupPerformanceOptimizations();
         utils.setupScrollSpy();
@@ -31,7 +38,6 @@ class App {
             const preloader = document.querySelector('.preloader');
             if (preloader) {
                 preloader.classList.add('hidden');
-                // Refresh ScrollTrigger after elements are visible
                 setTimeout(() => {
                     if (window.ScrollTrigger) window.ScrollTrigger.refresh();
                 }, 500);
@@ -48,18 +54,16 @@ class App {
             direction: 'vertical',
             gestureDirection: 'vertical',
             smoothWheel: true,
-            smoothTouch: false, // Disabled on touch for better native feel/perf
+            smoothTouch: false,
             touchMultiplier: 2,
         });
 
-        // Use GSAP ticker for Lenis for unified RAF
         if (window.gsap) {
             window.gsap.ticker.add((time) => {
                 this.lenis.raf(time * 1000);
             });
             window.gsap.ticker.lagSmoothing(0);
         } else {
-            // Fallback to native RAF if GSAP is missing
             const raf = (time) => {
                 this.lenis.raf(time);
                 requestAnimationFrame(raf);
@@ -67,7 +71,6 @@ class App {
             requestAnimationFrame(raf);
         }
 
-        // Sync ScrollTrigger with Lenis
         this.lenis.on('scroll', () => {
             if (window.ScrollTrigger) window.ScrollTrigger.update();
         });

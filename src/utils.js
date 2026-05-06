@@ -10,6 +10,7 @@ export function initTypewriter(selector, roles) {
     
     const type = () => {
         const curr = roles[roleIdx];
+        // Designation name update
         el.textContent = isDel ? curr.substring(0, charIdx--) : curr.substring(0, charIdx++);
         
         if (!isDel && charIdx > curr.length) { 
@@ -26,15 +27,23 @@ export function initTypewriter(selector, roles) {
     type();
 }
 
-export function initKonamiCode(callback) {
-    const code = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
-    let input = [];
-    document.addEventListener('keydown', (e) => {
-        input.push(e.code);
-        if (input.length > code.length) input.shift();
-        if (input.join(',') === code.join(',')) {
-            callback();
+export function setupBackToTop() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            btn.classList.add('show');
+        } else {
+            btn.classList.remove('show');
         }
+    });
+
+    btn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
 }
 
@@ -64,7 +73,6 @@ export function setupContactForm() {
         if (submitBtn) submitBtn.disabled = true;
 
         try {
-            // Google Forms Integration via no-cors
             const googleFormUrl = form.getAttribute('action');
             if (googleFormUrl) {
                 await fetch(googleFormUrl, {
@@ -104,5 +112,14 @@ export function setupScrollSpy() {
                 link.classList.add('active');
             }
         });
+        
+        // Update Scroll HUD
+        const hudScroll = document.getElementById('hudScroll');
+        if (hudScroll) {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            hudScroll.textContent = Math.round(scrolled) + '%';
+        }
     });
 }
