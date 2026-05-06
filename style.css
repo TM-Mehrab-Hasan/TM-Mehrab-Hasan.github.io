@@ -17,19 +17,19 @@
     --danger-color: #ef4444;
     
     /* Dark Theme (Default) - Enhanced to OS/HUD Style */
-    --bg-primary: #000000;
-    --bg-secondary: #050505;
-    --bg-tertiary: #0a0a0a;
-    --bg-card: rgba(10, 10, 10, 0.7);
-    --bg-glass: rgba(0, 119, 182, 0.05);
-    --bg-glass-hover: rgba(0, 119, 182, 0.1);
+    --bg-primary: #020c1b;
+    --bg-secondary: #0a192f;
+    --bg-tertiary: #112240;
+    --bg-card: rgba(17, 34, 64, 0.7);
+    --bg-glass: rgba(10, 25, 47, 0.4);
+    --bg-glass-hover: rgba(10, 25, 47, 0.6);
     
-    --text-primary: #ffffff;
-    --text-secondary: #a0aec0;
-    --text-muted: #718096;
+    --text-primary: #e6f1ff;
+    --text-secondary: #8892b0;
+    --text-muted: #495670;
     
-    --border-primary: rgba(0, 180, 216, 0.3);
-    --border-secondary: rgba(255, 255, 255, 0.1);
+    --border-primary: rgba(100, 255, 218, 0.1);
+    --border-secondary: rgba(100, 255, 218, 0.05);
     
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--primary-light));
@@ -204,6 +204,11 @@ select:focus-visible {
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+}
+
+p {
+    text-align: justify;
+    hyphens: auto;
 }
 
 body {
@@ -4528,6 +4533,34 @@ button:focus-visible {
     color: white;
     cursor: pointer;
     transition: background 0.3s;
+}
+
+/* Low Performance Mode - Hardware Aware */
+.low-perf *, 
+.low-perf *::before, 
+.low-perf *::after {
+    animation-duration: 0.1s !important;
+    transition-duration: 0.1s !important;
+}
+
+.low-perf .noise-overlay,
+.low-perf .hero-gradient,
+.low-perf .hud-scanline {
+    display: none !important;
+}
+
+.low-perf .section,
+.low-perf .navbar,
+.low-perf .ai-chatbot-hud,
+.low-perf .project-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: var(--bg-tertiary) !important;
+}
+
+.low-perf .cursor,
+.low-perf .cursor-follower {
+    display: none !important;
 }
 
 #sendChat:hover {

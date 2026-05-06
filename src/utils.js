@@ -48,6 +48,17 @@ export function setupBackToTop() {
 }
 
 export function setupPerformanceOptimizations() {
+    // Detect low-spec devices
+    const isLowSpec = (
+        (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
+        (navigator.deviceMemory && navigator.deviceMemory <= 4) ||
+        (window.innerWidth <= 768)
+    );
+    
+    if (isLowSpec) {
+        document.body.classList.add('low-perf');
+    }
+
     // Image lazy loading
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => {

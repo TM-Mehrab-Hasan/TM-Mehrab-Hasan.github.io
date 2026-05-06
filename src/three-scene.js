@@ -58,8 +58,9 @@ export class ThreeScene {
     }
 
     createNeuralNetwork() {
-        // Base particles
-        const particlesCount = 150;
+        // Reduced complexity for low-perf devices
+        const isLowPerf = document.body.classList.contains('low-perf');
+        const particlesCount = isLowPerf ? 60 : 150;
         const positions = new Float32Array(particlesCount * 3);
         this.velocities = [];
         
@@ -69,9 +70,9 @@ export class ThreeScene {
             positions[i * 3 + 2] = (Math.random() - 0.5) * 15;
             
             this.velocities.push({
-                x: (Math.random() - 0.5) * 0.005,
-                y: (Math.random() - 0.5) * 0.005,
-                z: (Math.random() - 0.5) * 0.005
+                x: (Math.random() - 0.5) * (isLowPerf ? 0.003 : 0.005),
+                y: (Math.random() - 0.5) * (isLowPerf ? 0.003 : 0.005),
+                z: (Math.random() - 0.5) * (isLowPerf ? 0.003 : 0.005)
             });
         }
 
@@ -79,7 +80,7 @@ export class ThreeScene {
         this.geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
         const material = new THREE.PointsMaterial({
-            size: 0.06,
+            size: isLowPerf ? 0.08 : 0.06,
             color: 0x00b4d8,
             transparent: true,
             opacity: 0.6,
@@ -99,7 +100,7 @@ export class ThreeScene {
             { id: 'contact', label: 'CMD', color: 0x03045e }
         ];
 
-        const nodeGeo = new THREE.SphereGeometry(0.15, 16, 16);
+        const nodeGeo = new THREE.SphereGeometry(0.15, isLowPerf ? 8 : 16, isLowPerf ? 8 : 16);
         
         sections.forEach((s, i) => {
             const nodeMat = new THREE.MeshBasicMaterial({ 
@@ -149,15 +150,13 @@ export class ThreeScene {
                 const sectionId = intersects[0].object.userData.sectionId;
                 if (this.app.lenis) {
                     this.app.lenis.scrollTo('#' + sectionId, { duration: 1.5 });
-                    if (this.app.terminalHUD) {
-                        this.app.terminalHUD.addLine(`Warping to section: ${sectionId.toUpperCase()}`, 'success');
-                    }
                 }
             }
         });
     }
 
     updateNetwork() {
+        const isLowPerf = document.body.classList.contains('low-perf');
         const posAttr = this.geometry.attributes.position;
         const linePositions = [];
         const particlesCount = posAttr.count;
@@ -187,7 +186,9 @@ export class ThreeScene {
         // Draw connections between nodes and close particles
         for(let i = 0; i < this.nodes.length; i++) {
             const nodePos = this.nodes[i].position;
-            for(let j = 0; j < particlesCount; j++) {
+            // Limit connections on low-perf
+            const step = isLowPerf ? 3 : 1;
+            for(let j = 0; j < particlesCount; j += step) {
                 const px = posAttr.array[j * 3];
                 const py = posAttr.array[j * 3 + 1];
                 const pz = posAttr.array[j * 3 + 2];
@@ -197,7 +198,7 @@ export class ThreeScene {
                 const dz = nodePos.z - pz;
                 const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
 
-                if(dist < 3) {
+                if(dist < (isLowPerf ? 2.5 : 3)) {
                     linePositions.push(nodePos.x, nodePos.y, nodePos.z, px, py, pz);
                 }
             }

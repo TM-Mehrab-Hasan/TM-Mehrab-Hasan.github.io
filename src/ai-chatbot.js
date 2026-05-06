@@ -1,6 +1,6 @@
 /**
- * AI Chatbot with Gemini 1.5 Flash - Real-time + Intelligent Fallback
- * Header-based API authentication with portfolio context knowledge
+ * Sensei - Mehrab's AI Assistant
+ * Gemini 1.5 Flash powered with intelligent fallback
  */
 export class AIChatbot {
     constructor(app) {
@@ -65,6 +65,27 @@ export class AIChatbot {
 - Executive Officer: UFTB Programming Club
 - Program Secretary: UFTB Cultural Club
 - Korean Language Secretary: UFTB Language Club`
+            },
+            {
+                patterns: ['education', 'study', 'university', 'college', 'degree', 'cgpa'],
+                response: `Academic Background:
+- B.Sc. in IoT & Robotics: University of Frontier Technology (CGPA: 3.71)
+- HSC & SSC: Notre Dame College, Dhaka (GPA: 5.00/5.00)`
+            },
+            {
+                patterns: ['award', 'achievement', 'recognition', 'medal', 'dean'],
+                response: `Key Recognitions:
+- Dean's Award & Dean's List (UFT)
+- 1st Place: Applink Innovation Contest ("Intelligent Law Advisor")
+- 3rd Runner Up: Upazila Science Fair
+- 10+ Professional Certifications (AWS, OPSWAT, Python, Cybersecurity)`
+            },
+            {
+                patterns: ['testimonial', 'recommendation', 'feedback', 'review', 'what people say'],
+                response: `What Professionals Say:
+- Ahsanul Akib (MD, Robo Tech Valley): "Exceptional work on IoT systems... a true professional."
+- Prof. Dr. Abu Yousuf (VC, UFT): "Innovative approach to complex problems... sets him apart."
+- NSR DEV Team: "Clean, well-documented code... follows best practices."`
             }
         ];
 
@@ -83,13 +104,11 @@ export class AIChatbot {
             this.hud.classList.toggle('minimized');
         });
         
-        // Auto-scroll to bottom
         const observer = new MutationObserver(() => {
             this.messages.scrollTop = this.messages.scrollHeight;
         });
         this.messages && observer.observe(this.messages, { childList: true });
 
-        // Start minimized on mobile, expanded on desktop
         if (window.innerWidth <= 768) {
             this.hud.classList.add('minimized');
         } else {
@@ -120,7 +139,7 @@ export class AIChatbot {
     }
 
     async getGeminiResponse(userMessage) {
-        const systemPrompt = `You are MEHRAB_AI, the professional personal assistant for T. M. Mehrab Hasan.
+        const systemPrompt = `You are Sensei, the professional AI assistant for T. M. Mehrab Hasan.
 Your goal is to provide concise, technical, and accurate information about his career, skills, and projects.
 
 MEHRAB'S COMPREHENSIVE DATA:
@@ -137,16 +156,12 @@ INTELLIGENCE GUIDELINES:
 1. FORMATTING: Use bullet points (starting with '-') for lists. Use 1-3 sentences for paragraphs.
 2. STYLE: Extremely concise. Don't fluff. Technical but accessible.
 3. CONTEXT: If asked about something not in the data, politely say you only have information about Mehrab's professional portfolio.
-4. PERSONALITY: Efficient, helpful, and professional.
+4. PERSONALITY: Wise, efficient, and professional (like a 'Sensei').
 
 Example:
 User: "What is his experience?"
 AI: "Mehrab is currently a Jr. Software Developer at BFIN IT, developing BITSS VWAR for malware detection. He also works as a remote Django developer at NSR DEV and has internship experience in IoT and Robotics."`;
 
-        // Note: Real implementation would call the actual Gemini API here.
-        // For this demo, we use the system prompt + user message logic.
-        // I will use a placeholder fetch that represents the API call.
-        
         const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -166,7 +181,7 @@ AI: "Mehrab is currently a Jr. Software Developer at BFIN IT, developing BITSS V
                 return item.response;
             }
         }
-        return "I'm MEHRAB_AI. I can tell you about Mehrab's skills, 40+ projects, 7+ research publications, and professional experience. What would you like to know?";
+        return "I'm Sensei, Mehrab's Assistant. I can tell you about Mehrab's skills, 40+ projects, 7+ research publications, education, and professional experience. What would you like to know?";
     }
 
     addMessage(text, type, isTyping = false) {
@@ -174,7 +189,6 @@ AI: "Mehrab is currently a Jr. Software Developer at BFIN IT, developing BITSS V
         msgDiv.className = `message ${type} ${isTyping ? 'typing-indicator' : ''}`;
         
         if (!isTyping) {
-            // Basic markdown-like list formatting for fallback
             if (text.includes('- ')) {
                 const parts = text.split('\n');
                 let html = '';

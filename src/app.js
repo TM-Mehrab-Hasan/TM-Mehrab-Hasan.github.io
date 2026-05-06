@@ -74,6 +74,22 @@ class App {
         this.lenis.on('scroll', () => {
             if (window.ScrollTrigger) window.ScrollTrigger.update();
         });
+
+        // Intercept all anchor links for smooth momentum scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = anchor.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    this.lenis.scrollTo(target, {
+                        offset: -80,
+                        duration: 1.5,
+                        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+                    });
+                }
+            });
+        });
     }
 }
 
